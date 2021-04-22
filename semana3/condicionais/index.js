@@ -97,81 +97,88 @@
 
 // ----------------------> Desafio 2 <---------------------------
 
-// let nome = prompt("Digite seu nome completo")
-// let tipo_jogo = prompt("Digite o tipo de jogo")
-// let etapa_jogo = prompt("Digite qual a etapa do jogo( SF = Semi Final, DT = Decisão de Terceiro lugar, FL = Final").toLowerCase()
-// let categoria_jogo = Number(prompt("Digite a categoria do jogo"))
-// let qtd_ingresso = Number(prompt("Digite a quantidade de ingressos"))
+let nome = prompt("Digite seu nome completo")
+let tipo_jogo = prompt("Digite o tipo de jogo").toLowerCase()
+let etapa_jogo = prompt("Digite qual a etapa do jogo( SF = Semi Final, DT = Decisão de Terceiro lugar, FL = Final").toLowerCase()
+let categoria_jogo = Number(prompt("Digite a categoria do jogo"))
+let qtd_ingresso = Number(prompt("Digite a quantidade de ingressos"))
 
-// let valor_ingress = 0
-// let valor_total = 0
+let valor_ingress = 0
+let valor_total = 0
 
-// if(etapa_jogo === 'sf'){
-//     etapa_jogo = 'Semi Final'
-//     switch(categoria_jogo){
-//         case(1):
-//             valor_ingress = 1320
-//             break;
-//         case(2):
-//             valor_ingress = 880 
-//             break;
-//         case(3):
-//             valor_ingress = 550
-//             break;
-//         case(4):
-//             valor_ingress = 220
-//             break;
-//     }
-// }
+let moeda = "R$"
 
-// if(etapa_jogo === 'dt'){
-//     etapa_jogo = 'Decisão do 3º lugar'
+if(etapa_jogo === 'sf'){
+    etapa_jogo = 'Semi Final'
+    switch(categoria_jogo){
+        case(1):
+            valor_ingress = 1320
+            break;
+        case(2):
+            valor_ingress = 880 
+            break;
+        case(3):
+            valor_ingress = 550
+            break;
+        case(4):
+            valor_ingress = 220
+            break;
+    }
+}
 
-//     switch(categoria_jogo){
-//         case(1):
-//             valor_ingress = 660
-//             break;
-//         case(2):
-//             valor_ingress = 440 
-//             break;
-//         case(3):
-//             valor_ingress = 330
-//             break;
-//         case(4):
-//             valor_ingress = 170
-//             break;
-//     }
-// }
+if(etapa_jogo === 'dt'){
+    etapa_jogo = 'Decisão do 3º lugar'
 
-// if(etapa_jogo === 'fl'){
-//     etapa_jogo = 'Final'
+    switch(categoria_jogo){
+        case(1):
+            valor_ingress = 660
+            break;
+        case(2):
+            valor_ingress = 440 
+            break;
+        case(3):
+            valor_ingress = 330
+            break;
+        case(4):
+            valor_ingress = 170
+            break;
+    }
+}
 
-//     switch(categoria_jogo){
-//         case(1):
-//             valor_ingress = 1980
-//             break;
-//         case(2):
-//             valor_ingress = 1320 
-//             break;
-//         case(3):
-//             valor_ingress = 880
-//             break;
-//         case(4):
-//             valor_ingress = 330
-//             break;
-//     }
-// }
+if(etapa_jogo === 'fl'){
+    etapa_jogo = 'Final'
 
-// console.log('Nome do Cliente:', nome)
-// console.log('Tipo do jogo:', tipo_jogo)
-// console.log('Etapa do jogo:', etapa_jogo)
-// console.log('Categoria:', categoria_jogo)
-// console.log('Quantidade de Ingressos:', qtd_ingresso)
+    switch(categoria_jogo){
+        case(1):
+            valor_ingress = 1980
+            break;
+        case(2):
+            valor_ingress = 1320 
+            break;
+        case(3):
+            valor_ingress = 880
+            break;
+        case(4):
+            valor_ingress = 330
+            break;
+    }
+}
 
-// valor_total = qtd_ingresso * valor_ingress
+if(tipo_jogo === 'internacional'){
+    valor_ingress = valor_ingress * 4.10
+    moeda = "U$"
+}
 
-// console.log('Valor do ingresso:', valor_ingress)
-// console.log('Valor total:', valor_total)
+console.log('Nome do Cliente:', nome)
+console.log('Tipo do jogo:', tipo_jogo)
+console.log('Etapa do jogo:', etapa_jogo)
+console.log('Categoria:', categoria_jogo)
+console.log('Quantidade de Ingressos:', qtd_ingresso)
+
+valor_total = qtd_ingresso * valor_ingress
+
+console.log('Valor do ingresso:', moeda + valor_ingress)
+console.log('Valor total:', moeda + valor_total)
 
 
 
