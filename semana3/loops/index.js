@@ -67,3 +67,70 @@ let arrayPar = []
 
 // console.log(`O maior número é ${maiorNumero} e o menor é ${menorNumero}`)
 
+// ----------------------> Desafio 1 <---------------------------
+
+// let numero = Number(prompt('Escolha um número'))
+// console.log('Vamos Jogar')
+
+// let chute = Number(prompt('Chute o número'))
+
+// let qtd = 0
+    
+
+// while(chute != numero){
+//     qtd ++
+//     if(chute > numero){
+//         console.log(`O número chutado foi: ${chute}`)
+//         console.log('Errrrrrrrou, é menor')
+//     }else if(chute < numero){
+//         console.log(`O número chutado foi: ${chute}`)
+//         console.log('Errrrrrrrou, é maior')
+//     }
+
+
+//     chute = Number(prompt('Chute o número'))
+// }
+
+
+// if(chute === numero){
+//     qtd ++
+//     console.log(`O número chutado foi: ${chute}`)
+//     console.log(`Acertou!!`)
+//     console.log(`O número de tentativas foi: ${qtd}`)
+// }
+
+// ----------------------> Desafio 2 <---------------------------
+
+
+// let numero = Math.floor(Math.random() * 101); 
+// console.log('Vamos Jogar')
+
+// let chute = Number(prompt('Chute o número'))
+
+// let qtd = 0
+    
+
+// while(chute != numero){
+//     qtd ++
+//     if(chute > numero){
+//         console.log(`O número chutado foi: ${chute}`)
+//         console.log('Errrrrrrrou, é menor')
+//     }else if(chute < numero){
+//         console.log(`O número chutado foi: ${chute}`)
+//         console.log('Errrrrrrrou, é maior')
+//     }
+
+
+//     chute = Number(prompt('Chute o número'))
+// }
+
+
+// if(chute === numero){
+//     qtd ++
+//     console.log(`O número chutado foi: ${chute}`)
+//     console.log(`Acertou!!`)
+//     console.log(`O número de tentativas foi: ${qtd}`)
+// }
+
+
+//Foi bem simples implementar a aleatoriedade ao sistema, bastou mudar o que estava na variavel. 
