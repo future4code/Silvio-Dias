@@ -144,3 +144,89 @@ let i = 0;
 // }
 
 // console.log(quantidadePar(array))
+
+
+// ----------------------> Desafio 1 <---------------------------
+
+//a.
+// let arrow = (parametro) =>{
+//     return parametro
+// }
+
+// console.log(arrow('teste'))
+
+
+//b.
+// let arrowSoma = (val1,val2) =>{
+//     soma = val1 + val2
+//     console.log(arrow(soma))
+// }
+
+// arrowSoma(2,4)
+
+// ----------------------> Desafio 2 <---------------------------
+
+const numeros = [0, 8, 23, 16, 10, 15, 41, 12, 13]
+let outroArray = []
+
+//a.
+
+// function paresMultiplicados(arrayNumeros){
+//     for(let valor of arrayNumeros ){
+//         if(valor % 2 === 0){
+//             valor = valor * 2
+//             outroArray.push(valor)
+//         }
+//     }
+//     console.log(outroArray)
+// }
+
+// paresMultiplicados(numeros)
+
+//b.
+// function maiorNumero(arrayNumeros){
+//     let maior = 0
+//     for(let valor of arrayNumeros){
+//         if(valor > maior){
+//             maior = valor
+//         }
+//     }
+
+//     return maior
+// }
+
+// console.log(maiorNumero(numeros))
+
+//c.
+// function indiceMaior(arrayNumeros){
+
+//     let maior = 0
+//     let indiceMaior = 0
+//     let i = 0
+
+//     for(let valor of arrayNumeros){
+       
+//         if(valor > maior){
+//             maior = valor
+//             indiceMaior = i
+//         }
+
+//         i++
+//     }
+
+//     return indiceMaior
+// }
+
+// console.log(indiceMaior(numeros))
+
+function inverterArray(arrayNumeros){
+    let arrayInvertido = []
+    for(let i = arrayNumeros.length -1; i >= 0;i--){
+        arrayInvertido.push(arrayNumeros[i])
+
+    }
+
+    return arrayInvertido
+}
+
+console.log(inverterArray(numeros))
