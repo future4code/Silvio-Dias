@@ -1,10 +1,11 @@
-let novaTarefa = ""
-let dia = ""
-let hora = 0
 let numeroTarefa = 0
 let tarefaArray = []
 
 function criarTarefa(){
+    let novaTarefa = ""
+    let dia = ""
+    let hora = 0
+
     //Cria a parte em código da Tarefa
     let inputTarefa = document.getElementById('tarefa').value
     let inputDia = document.getElementById('dias-semana').value
@@ -27,7 +28,7 @@ function criarTarefa(){
 function imprimirCalendario(nomeTarefa,diaSemana,horaTarefa){
     
 
-    let calendarioDia = document.getElementById(dia) //Busca o ID para imprimir no calendário 
+    let calendarioDia = document.getElementById(diaSemana) //Busca o ID para imprimir no calendário 
     let tarefaID = `tarefa${numeroTarefa}` //Cria uma ID única para cada entrada
   
 
