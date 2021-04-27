@@ -1,0 +1,65 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section {
+    display: flex;
+    justify-content: space-evenly;
+    height: 90vh;
+}
+
+
+
+.semana {
+    border: 1px dotted rgb(53, 53, 53);
+    width: 14%;
+    padding: 5px;
+}
+
+.tarefaListada:hover{
+    color: red;
+}
+
+.tarefaRiscada{
+    text-decoration: line-through
+}
+
+
+@media only screen and (max-width: 480px){
+
+    header{
+        height: 25vh;
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    form{
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0.5rem;
+    }
+
+    input{
+        width: 100%;
+    }
+
+    button{
+        width: 50%;
+    }
+
+    section{
+        flex-wrap: wrap;
+    }
+    .semana{
+        width: 100%;
+    }
+}
