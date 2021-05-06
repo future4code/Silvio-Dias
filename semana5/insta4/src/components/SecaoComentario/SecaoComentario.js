@@ -31,7 +31,6 @@ export class SecaoComentario extends Component {
 	}
 
 	aoEnviar = () => {
-		alert('Oi')
 		const novoComentario = this.state.comentario 
 
 		this.setState({
