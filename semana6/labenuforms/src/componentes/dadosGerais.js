@@ -33,6 +33,8 @@ export default class DadosGerais extends React.Component{
                     "Ensino superior incompleto",
                     "Ensino superior completo",
                 ]}
+
+
                 respostaForm = {this.props.escolaridadeForm}
                 
 
