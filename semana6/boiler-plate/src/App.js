@@ -80,6 +80,16 @@ class App extends React.Component {
 
   }
 
+  deletarTarefa = (id) => {
+    const novaLista = [...this.state.tarefas]
+
+    const listaFiltrada = novaLista.filter((tarefa) => {
+      return tarefa.id !== id
+    })
+
+    this.setState({tarefas: listaFiltrada})
+  }
+
   onChangeFilter = (event) => {
     this.setState({filtro: event.target.value})
     console.log(this.state.filtro)
@@ -117,12 +127,17 @@ class App extends React.Component {
         <TarefaList>
           {listaFiltrada.map(tarefa => {
             return (
+              <div>
               <Tarefa
                 completa={tarefa.completa}
                 onClick={() => this.selectTarefa(tarefa.id)}
               >
                 {tarefa.texto}
+                
               </Tarefa>
+
+              <button onClick = {() => this.deletarTarefa(tarefa.id)}>Deletar</button>
+              </div>
             )
           })}
         </TarefaList>
