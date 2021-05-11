@@ -60,7 +60,6 @@ class App extends React.Component {
 
 
     this.setState({tarefas: [...this.state.tarefas, novaTarefa]})
-    console.log(this.state.tarefas)
   }
 
   selectTarefa = (id) => {
@@ -90,9 +89,12 @@ class App extends React.Component {
     this.setState({tarefas: listaFiltrada})
   }
 
+  apagarTarefas = () => {
+    this.setState({tarefas: [{id: "", texto: "", completa: ""}]})
+  }
+
   onChangeFilter = (event) => {
     this.setState({filtro: event.target.value})
-    console.log(this.state.filtro)
   }
 
   render() {
@@ -125,10 +127,11 @@ class App extends React.Component {
           </select>
         </InputsContainer>
         <TarefaList>
+          <button onClick = {this.apagarTarefas}> Apagar todas as Tarefas</button>
           {listaFiltrada.map(tarefa => {
             return (
               <div>
-              <Tarefa
+              <Tarefa key = {tarefa.id}
                 completa={tarefa.completa}
                 onClick={() => this.selectTarefa(tarefa.id)}
               >
