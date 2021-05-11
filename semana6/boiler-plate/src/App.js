@@ -30,9 +30,19 @@ class App extends React.Component {
     }
 
   componentDidUpdate() {
+
+    localStorage.setItem("tarefas",JSON.stringify(this.state.tarefas))
+
   };
 
   componentDidMount() {
+    const tarefasLocal = localStorage.getItem("tarefas")
+
+   const tarefasLocalObjeto = JSON.parse(tarefasLocal)
+
+   if(tarefasLocal){
+    this.setState({tarefas: tarefasLocalObjeto})
+   } 
 
   };
 
