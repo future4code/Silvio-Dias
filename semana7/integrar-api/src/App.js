@@ -18,7 +18,8 @@ export default class App extends React.Component{
   state = {
     usuarios: [],
     nomeCadastro: "",
-    emailCadastro: ""
+    emailCadastro: "",
+    pagina: "cadastro"
 }
 
 ////////////////////////////////////////// BUSCA USUARIO 
@@ -73,19 +74,44 @@ handleEmail = (event) =>{
     this.setState({emailCadastro: event.target.value})
 }
 
-render(){
+trocarPagina = () =>{
+  return this.state.pagina === "cadastro" ? this.setState({pagina: 'usuarios'}):this.setState({pagina: 'cadastro'})
+  
+  }
+
+render(){  
+        
+  if(this.state.pagina === "cadastro"){
+    return (
+    <div>
+      <button onClick = {this.trocarPagina}>Trocar pagina</button>
+      <Cadastro
+
+      handleNome = {this.handleNome}
+      handleEmail = {this.handleEmail}
+      cadastrarUsuario = {this.cadastrarUsuario}
+
+      />
+    </div>
+    )
+  }else if(this.state.pagina === "usuarios"){
+   return(
+    <div>
+      <button onClick = {this.trocarPagina}>Trocar pagina</button>
+      <Usuarios
+      
+      lista = {this.getUsuario}
+      listaUsuarios = {this.state.usuarios}
+      deleteUser = {this.deleteUsuario}
+      
+      />
+    </div>
+   )
+  }
+
   return (
     <div>
-      <Cadastro
-        handleNome = {this.handleNome}
-        handleEmail = {this.handleEmail}
-        cadastrarUsuario = {this.cadastrarUsuario}
-      />
-      <Usuarios
-        lista = {this.getUsuario}
-        listaUsuarios = {this.state.usuarios}
-        deleteUser = {this.deleteUsuario}
-      />
+
     </div>
   );
 }
