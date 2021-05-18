@@ -18,7 +18,7 @@ export default class Usuarios extends React.Component{
             return(
                 <li key = {user.id}>
                     {user.name}
-                    <button>Apagar</button>
+                    <button onClick = {() => this.props.deleteUser(user.id)}>Apagar</button>
                 </li>
             )
         })

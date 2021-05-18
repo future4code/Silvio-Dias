@@ -3,12 +3,12 @@ import Usuarios from './components/usuarios/usuario';
 import axios from "axios"
 import React from 'react'
 
-const BASE_URL =   "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users";
+const BASE_URL =   "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users"; // URL PADRÃO
 
 
 const header = {
   headers: {
-    Authorization: "silvio-paiva"
+    Authorization: "silvio-paiva" 
   }
 }
 
@@ -21,22 +21,31 @@ export default class App extends React.Component{
     emailCadastro: ""
 }
 
-
+////////////////////////////////////////// BUSCA USUARIO 
 getUsuario = () =>{
 
   axios.get(BASE_URL,header)
       .then((resposta) => {
-      console.log(resposta.data)
-      this.setState({usuarios: resposta.data})
+      this.setState({usuarios: resposta.data}) //Acrescenta a lista da API no State
   })
       .catch((err) =>{
-      console.log(err.message)
+      alert('tivemos problema ao buscar usuarios')
+  })
+}
+////////////////////////////////////////// DELETAR USUARIO
+deleteUsuario = (id) =>{
+  const DELETE_URL = "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/"
+  axios.delete(DELETE_URL+id,header)
+      .then((resposta) => {
+      alert('Usuario deletado')
+      this.getUsuario()
+  })
+      .catch((err) =>{
+      alert('Tivemos um problema ao deletar o usuario')
   })
 }
 
-
-
-
+/////////////////////////////////// Cadastro de Usuario
 cadastrarUsuario = () => {
 
     const body = {
@@ -52,8 +61,7 @@ cadastrarUsuario = () => {
     })
         .catch((err) =>{
             alert('Tivemos um problema no cadastro')
-            console.log(err)
-            console.log(BASE_URL,body,header)
+
     })
 }
   
@@ -76,6 +84,7 @@ render(){
       <Usuarios
         lista = {this.getUsuario}
         listaUsuarios = {this.state.usuarios}
+        deleteUser = {this.deleteUsuario}
       />
     </div>
   );
