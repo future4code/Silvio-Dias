@@ -34,6 +34,13 @@ getUsuario = () =>{
   })
 }
 ////////////////////////////////////////// DELETAR USUARIO
+confirmarDelete = (id) => {
+
+  if(window.confirm("Tem certeza de que deseja deletar?")){
+    return this.deleteUsuario(id)
+  }
+}
+
 deleteUsuario = (id) =>{
   const DELETE_URL = "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users/"
   axios.delete(DELETE_URL+id,header)
@@ -102,7 +109,7 @@ render(){
       
       lista = {this.getUsuario}
       listaUsuarios = {this.state.usuarios}
-      deleteUser = {this.deleteUsuario}
+      deleteUser = {this.confirmarDelete}
       
       />
     </div>
