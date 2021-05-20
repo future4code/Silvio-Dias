@@ -1,19 +1,21 @@
 import styled from 'styled-components'
 
 export const Button = styled.button`
-    background-color: red;
-    color: blue;
+    background-color: #E86F73;
+    color: #E8E7D9;
     font-size: xx-large;
+    font-weight: bolder;
+    border: none;
+    margin: 0.5rem;
+
+    &:hover{
+        cursor:  pointer;
+        background-color: #E8E7D9;
+        color: #E86F73;
+    }
 
 `
 
-export const INput = styled.input`
-    display: flex;
-    text-align: center;
-    font-size: xx-large;
-    width: 500px;
-    margin-bottom: 2rem;
-`
 
 export const Img = styled.div`
     img{
@@ -27,4 +29,11 @@ export const Div = styled.div`
     align-items: center;
     justify-content: center;
     height: 100vh;
+    color:#1F1F1F;
+`
+export const DivResposta = styled.div`
+    display: grid;
+    grid-template-columns: 230px 230px;
+    grid-template-rows: 100px 100px;    
+
 `
