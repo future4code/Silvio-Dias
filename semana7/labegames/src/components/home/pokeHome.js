@@ -1,5 +1,6 @@
 import React from "react"
 import axios from "axios"
+import FimdeJogo from "../fimdejogo"
 import { Button, Div, Img, DivResposta } from "./styled"
 
 
@@ -10,12 +11,16 @@ export default class Pokehome extends React.Component{
     state = {
         pokemonHome: [],
         pokeEscolhas: [],
-        ponto: 0
+        ponto: 0,
+        vida: 6
     }
 
     componentDidMount(){
         this.gerarPokemon()
     }
+
+
+
 
     Capitalize(str){
         return str.charAt(0).toUpperCase() + str.slice(1);
@@ -69,6 +74,7 @@ export default class Pokehome extends React.Component{
         }else{
             alert(`Você errou o nome, o certo é ${this.Capitalize(this.state.pokemonHome.nome)}`)
             this.setState({ponto: this.state.ponto-10})
+            this.setState({vida: this.state.vida-1})
         }
         this.setState({pokeEscolhas: []})
         this.gerarPokemon()
@@ -86,6 +92,16 @@ export default class Pokehome extends React.Component{
 
     render(){
 
+            if(this.state.vida === 0){
+                return(
+                    <FimdeJogo
+                    ponto = {this.state.ponto}
+                    
+                    />
+                )
+            }
+
+
         const escolhas = this.state.pokeEscolhas.map((escolha) =>{
             return(
                 <Button 
@@ -100,6 +116,7 @@ export default class Pokehome extends React.Component{
             <Div>
                 <h1>Quem é esse Pokémon?</h1>
                 <h2>Ponto: {this.state.ponto}</h2>
+                <h3>Vida: {this.state.vida}</h3>
                 <Img>
                     <img src = {this.state.pokemonHome.img}/>
                 </Img>
