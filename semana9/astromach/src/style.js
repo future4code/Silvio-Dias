@@ -7,17 +7,18 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
+background-color: #F5F7FA;
 
 `
 
 export const CardProfile = styled.div`
-    border: solid 1px black;
+    border-radius: 3%;
     width: 350px;
-    height: 700px;
+    height: 750px;
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
-    background-color: gray;
+    padding: 0 1rem;
+    
 `

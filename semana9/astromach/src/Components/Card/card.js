@@ -1,28 +1,20 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import { enterStudent} from '../api'
+import { enterStudent, restartMatch} from '../api'
 
 import {PhotoProfile,ButtonArea,NameAge,
-        ButtonMatch,ProfilePage,HeartMatch,
-        ButtonCancel,CancelMatch,BtnTest } from './style'
+        ButtonProfile,ProfilePage,LoadingArea,
+        Description,Bio,OverMatch } from './style'
         
 import Loading from '../Img/loading.svg'
 
 
-import { BiHeartCircle } from 'react-icons/bi';
-import { ImCancelCircle } from 'react-icons/im';
-
-import { IconContext } from "react-icons";
-
-import { DragDropContext,Droppable,Draggable   } from 'react-beautiful-dnd';
-
-
-const Card = () => {
+const Card = (props) => {
 
 const [profile, setProfile] = useState("")
 const [changeCard, setChangeCard] = useState(false)
 const [isMatch,setIsMach] = useState(false)
-const [mouse,setMouse] = useState("")
+const [hover,setHover] = useState([false])
 
 useEffect(() => {
     getProfiles()
@@ -75,48 +67,70 @@ const getMatch = (id,choice) => {
         
     })
     .catch((err) => {
-        console.log(err.response.data.message)
+        alert(err)
     })
+
+    setHover([false])
 }
 
-    if(!profile){
-        return(<PhotoProfile>
-            <img src={Loading} />
-        </PhotoProfile>)
+    const hoverButton = (event) =>{
+        const mouseSituation = event._reactName.toString()
+        const direction = event.target.id
+        if(mouseSituation === "onMouseLeave"){
+            setHover([false])
+
+        }else{
+            setHover([true,direction])
+            
+        }
+    
     }
 
+    const resetMatch = () =>{
+        restartMatch()
+        getProfiles()
+        swapCard()
+    }
+
+    if(!profile){
+        return(
+            <LoadingArea>
+            <img src={Loading} />
+            </LoadingArea>
+        )
+    }
 
     return(
         <ProfilePage >
             {profile !== 'acabou' ? (
                 <div>
-                    <PhotoProfile style={{ backgroundImage: `url(${profile.photo})` }}> 
+                    <PhotoProfile rotate = {hover} style={{ backgroundImage: `url(${profile.photo})` }}> 
+                        <Description>
                         <NameAge>
-                        <h1>{profile.name}</h1>
-                        <p>,{profile.age}</p>
-                        </NameAge>
+                            <h1>{profile.name}</h1>
+                            <p>,{profile.age}</p>
+                            </NameAge>
 
-                        <p>{profile.bio}</p>
+                            <Bio>{profile.bio}</Bio>
+                        </Description>
                     </PhotoProfile>
 
-                    <BtnTest>
                     <ButtonArea>
-                            <ButtonCancel onClick = {() => getMatch(profile.id,false)}>
-                                <CancelMatch>&#128473; </CancelMatch>
-                            </ButtonCancel>
-                            <ButtonMatch onClick = {() => getMatch(profile.id,true)}><HeartMatch>&#10084; </HeartMatch>
-                            </ButtonMatch>
+                            <ButtonProfile id ="cancel" cancel onMouseOver = {hoverButton} onMouseLeave = {hoverButton} onClick = {() => getMatch(profile.id,false)}> &#10006;</ButtonProfile>
+                            <ButtonProfile id="heart" heart  onMouseOver = {hoverButton} onMouseLeave = {hoverButton} onClick = {() => getMatch(profile.id,true)}>&#10084;</ButtonProfile>
                     </ButtonArea>
-                    </BtnTest>
                 </div>
                 ):(
                 <div>     
-                    <PhotoProfile>
+                    <OverMatch>
                         <p>Estamos com problemas para achar novos profileis perto de você, tente resetar os Matchs</p>
-                    </PhotoProfile>
+                        <a onClick = {resetMatch}> Resetar Match </a>
+                    </OverMatch>
                 </div>
-                )   
+                )  
+                 
             }  
+
         </ProfilePage>
         
 

@@ -1,9 +1,5 @@
 import Card from "../Card/card"
 import Matchs from "../Matchs/matchs"
-import styled from "styled-components"
-
-
-
 
 const Home = (props) =>{
 
@@ -17,13 +13,11 @@ const Home = (props) =>{
             return (
                 <Matchs/>
             )
-
+        default:
+            return (
+                <Card/>
+            )
     }
-
-    return(
-        <div>
-        </div>
-    )
 }
 
 export default Home

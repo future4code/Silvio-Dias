@@ -9,9 +9,8 @@ export  const restartMatch = () =>{
     axios
     .put(enterStudent() + "clear")
     .then((response) => {
-        console.log(response)
     })
     .catch((err) => {
-        console.log(err.messege)
+        alert(err)
     })
 }

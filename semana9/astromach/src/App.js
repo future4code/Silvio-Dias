@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Header from './Components/Header/header';
 import Home from './Components/Home/home'
-import {restartMatch} from './Components/api'
 
 import { Div, CardProfile } from './style'
 
@@ -9,8 +8,6 @@ import { Div, CardProfile } from './style'
 
 
 const App = (props)=> { 
-
-  const [login, setLogin] = useState()
   const [pages, setPages] = useState('Card')
 
   const changePage = (pg) =>{
@@ -28,7 +25,6 @@ const App = (props)=> {
       pagination = {pages}
       />
       </CardProfile>
-    <button onClick = {restartMatch}>Reiniciar Match</button>
     </Div>
   );
 }

@@ -5,30 +5,19 @@ import Mail from "../Img/mail.svg"
 const HeaderDiv = styled.div`
     display:flex;
     justify-content: flex-end;
-    height: 10%;
+    height: 4%;
     width: 90%;
-    margin: 1rem 2rem;
-`
-
-const ImgLogo = styled.img`
-    width: 50%;
+    margin-bottom: 1rem;
 `
 
 const ButtonHeader = styled.img`
-    height:50px;
+    height:40px;
 
     :hover{
         cursor:pointer;
     }
 `
 const Header = (props) => {
-
-    const iconHeader = () =>{
-        if(props.checkPage === "Card"){
-            return {Mail}
-        }
-        return {Love}
-    }
 
     return(
         <HeaderDiv>
