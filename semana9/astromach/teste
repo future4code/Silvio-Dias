@@ -1,0 +1,6 @@
+  if(pos1 === 0){
+    console.log('centro')
+    }else if(pos1 < 0){
+    console.log('esquerda')
+    }else if(pos1 > 0){
+    console.log('direita')

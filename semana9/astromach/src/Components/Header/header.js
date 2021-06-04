@@ -1,24 +1,44 @@
 import styled from "styled-components"
-import logo from "../Img/logo.png"
+import Love from "../Img/love.svg"
+import Mail from "../Img/mail.svg"
 
 const HeaderDiv = styled.div`
     display:flex;
-    height: 100px;
+    justify-content: flex-end;
+    height: 10%;
+    width: 90%;
+    margin: 1rem 2rem;
 `
 
 const ImgLogo = styled.img`
     width: 50%;
 `
+
+const ButtonHeader = styled.img`
+    height:50px;
+
+    :hover{
+        cursor:pointer;
+    }
+`
 const Header = (props) => {
+
+    const iconHeader = () =>{
+        if(props.checkPage === "Card"){
+            return {Mail}
+        }
+        return {Love}
+    }
+
     return(
         <HeaderDiv>
-                <ImgLogo src = {logo}/>
-                <button onClick = {props.checkPage === "Card" ? (() => props.page('Match')):
+                <a onClick = {props.checkPage === "Card" ? (() => props.page('Match')):
                 (() => props.page('Card'))}>
                     
-                    {props.checkPage === "Card" ? 'Match':'Card'}
+                    <ButtonHeader src = {props.checkPage === "Card" ? Mail:Love}/>
                     
-                </button>
+                </a>
+
         </HeaderDiv>
 
     )

@@ -1,8 +1,14 @@
 import styled from 'styled-components'
 
+export const ProfilePage = styled.div`
+    height: 90%;
+`
+
 export const PhotoProfile = styled.div`
     width: 300px;
-    height: 400px;
+    height: 500px;
+
+    border-radius: 3%;
 
     background-size: cover;
     background-position:center;
@@ -19,7 +25,7 @@ export const PhotoProfile = styled.div`
     margin-bottom: 1rem;
 
     h1{
-        margin: 0
+        margin: 0;
     }
 
 `
@@ -27,26 +33,72 @@ export const PhotoProfile = styled.div`
 export const NameAge = styled.div`
     display: flex;
 `
+export const BtnTest = styled.div`
+
+    
+`
 
 export const ButtonArea = styled.div`
-    display: flex;
-    width: 100%;
-    justify-content: space-around;
+   display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 100%;
+  gap: 25%;
+`
 
-    a{
-        font-size: 40px;
+export const ButtonMatch = styled.div`
 
-        &:hover{
-            font-size: 60px; 
-        }
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    border: solid 1px green;
+    width: 90px;
+    height:90px;
+    transition: 0.3s;
+
+    &:hover{
+        background-color:green;
+        color:white;
+        height:100px;
+        width:100px;
+        cursor: pointer;
+    }
+`
+export const HeartMatch = styled.span`
+    font-size: 80px;
+    color:green;
+
+    transition: 0.3s;
+
+    &:hover{
+        color:white;
     }
 
 `
+export const ButtonCancel = styled.div`
 
-export const ButtonMatch = styled.img`
-    height: 40px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:50%;
+    border: solid 1px red;
+    width: 90px;
+    height:90px;
+    transition: 0.3s;
 
     &:hover{
-        height:60px
+        background-color:red;
+        height:100px;
+        width:100px;
+        cursor: pointer;
     }
+`
+export const CancelMatch = styled.span`
+    font-size: 80px;
+    color:red;
+
+    &:hover{
+        color:white;
+    }
+
 `

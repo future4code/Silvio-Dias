@@ -12,11 +12,12 @@ align-items: center;
 
 export const CardProfile = styled.div`
     border: solid 1px black;
-    width: 300px;
+    width: 350px;
+    height: 700px;
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 2rem;
+    padding: 1rem;
     background-color: gray;
 `
