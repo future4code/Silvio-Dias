@@ -1,22 +1,7 @@
-import styled from "styled-components"
 import Love from "../Img/love.svg"
 import Mail from "../Img/mail.svg"
+import { HeaderDiv,ButtonHeader } from "./style"
 
-const HeaderDiv = styled.div`
-    display:flex;
-    justify-content: flex-end;
-    height: 4%;
-    width: 90%;
-    margin-bottom: 1rem;
-`
-
-const ButtonHeader = styled.img`
-    height:40px;
-
-    :hover{
-        cursor:pointer;
-    }
-`
 const Header = (props) => {
 
     return(

@@ -4,9 +4,6 @@ import Home from './Components/Home/home'
 
 import { Div, CardProfile } from './style'
 
-
-
-
 const App = (props)=> { 
   const [pages, setPages] = useState('Card')
 

@@ -2,10 +2,13 @@ import axios from "axios"
 import { useEffect, useState } from "react"
 import { enterStudent } from "../api"
 import { ImgMatch,MatchPage,MatchArea } from "./style"
+import { LoadingArea } from "../style"
+
+import Loading from "../Img/loading.svg"
 
 const Matchs = () => {
 
-    const [matchs,setMatchs] = useState([])
+    const [matchs,setMatchs] = useState("")
 
     const stop = ""
 
@@ -15,7 +18,6 @@ const Matchs = () => {
 
     const createList = (response) => {
         setMatchs(response)
-        console.log(response)
     }
 
     const getMatch = () => {
@@ -29,8 +31,17 @@ const Matchs = () => {
         })
     }
 
+    if(!matchs){
+        return(
+            <LoadingArea>
+            <img src={Loading} />
+            </LoadingArea>
+        )
+    }
+
     const listMatch = matchs.map((match) => {
         return(
+            
                 <MatchArea>
                     <ImgMatch style={{ backgroundImage: `url(${match.photo})` }}> </ImgMatch>
                     <p>{match.name.length === 0 ?"Você ainda não tem nenhum match": match.name}</p> 

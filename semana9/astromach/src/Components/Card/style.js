@@ -83,10 +83,10 @@ export const OverMatch = styled.div`
 
 export const ButtonArea = styled.div`
     height: 100px;
-    display: grid;
+    display: inline-grid;
     grid-template-columns: 50% 50%;
     grid-template-rows: 100%;
-    gap: 25%;
+    gap: 50%;
     padding: 0 4rem;
     margin-top: 2rem;
 `

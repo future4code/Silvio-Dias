@@ -3,18 +3,19 @@ import { useEffect, useState } from 'react'
 import { enterStudent, restartMatch} from '../api'
 
 import {PhotoProfile,ButtonArea,NameAge,
-        ButtonProfile,ProfilePage,LoadingArea,
+        ButtonProfile,ProfilePage,
         Description,Bio,OverMatch } from './style'
-        
+
+import { LoadingArea } from "../style"
 import Loading from '../Img/loading.svg'
 
 
 const Card = (props) => {
 
-const [profile, setProfile] = useState("")
-const [changeCard, setChangeCard] = useState(false)
-const [isMatch,setIsMach] = useState(false)
-const [hover,setHover] = useState([false])
+const [profile, setProfile] = useState("") //Armazena perfil
+const [changeCard, setChangeCard] = useState(false) //Controlador de troca de card
+const [isMatch,setIsMach] = useState(false) // Verifica se teve Match
+const [hover,setHover] = useState([false]) //Verifica mouse nos botões
 
 useEffect(() => {
     getProfiles()
@@ -23,12 +24,11 @@ useEffect(() => {
 
 
 const checkProfile = (response) =>{
-    setProfile(response)
-    console.log(profile)
+    setProfile(response) //Controla estado de profile
 }
 
 const swapCard = () => {
-    setChangeCard(!changeCard)
+    setChangeCard(!changeCard) //Ativa a troca de card
 }
 
 const getProfiles = () =>{
@@ -37,14 +37,14 @@ const getProfiles = () =>{
     .then((response) => {
 
         if(!response.data.profile){
-            checkProfile('acabou')
+            checkProfile('acabou') // Notificação de que acabaram os profiles
         }else{
-            checkProfile(response.data.profile)
+            checkProfile(response.data.profile) // Armazena profile
         }
         
     })
     .catch((err) =>{
-        console.log(err)
+        alert(err)
     })
 } 
 
@@ -54,15 +54,16 @@ const getMatch = (id,choice) => {
         "choice": choice
     }
 
-    setProfile("")
-    swapCard()
+    setProfile("") //Limpa profile para garantir loading do usuario
+    swapCard() //Troca de card
+
     axios
     .post(enterStudent() + "choose-person",body)
     .then((response) => {
         setIsMach(response.data.isMatch)
         
         if(isMatch){
-            alert('Eeeeeeita, vai q deu Match')
+            alert('Eeeeeeita, vai q deu Match') //Alerta Match
         }
         
     })
@@ -70,39 +71,39 @@ const getMatch = (id,choice) => {
         alert(err)
     })
 
-    setHover([false])
+    setHover([false]) //garante que animação de card esteja resetada
 }
 
     const hoverButton = (event) =>{
         const mouseSituation = event._reactName.toString()
         const direction = event.target.id
         if(mouseSituation === "onMouseLeave"){
-            setHover([false])
+            setHover([false]) //Desativa animação
 
         }else{
-            setHover([true,direction])
+            setHover([true,direction]) //Ativa animação e indica direção por botão apertado
             
         }
     
     }
 
     const resetMatch = () =>{
-        restartMatch()
-        getProfiles()
-        swapCard()
+        restartMatch() // Reinicia API 
+        setProfile("") // Limpa profile
+        swapCard() //Troca o card
     }
 
-    if(!profile){
-        return(
+    if(!profile){ //Exibir loading
+        return( 
             <LoadingArea>
-            <img src={Loading} />
+            <img src={Loading} /> 
             </LoadingArea>
         )
     }
 
     return(
         <ProfilePage >
-            {profile !== 'acabou' ? (
+            {profile !== 'acabou' ? ( //Se não acabou, exibi card
                 <div>
                     <PhotoProfile rotate = {hover} style={{ backgroundImage: `url(${profile.photo})` }}> 
                         <Description>
@@ -120,7 +121,7 @@ const getMatch = (id,choice) => {
                             <ButtonProfile id="heart" heart  onMouseOver = {hoverButton} onMouseLeave = {hoverButton} onClick = {() => getMatch(profile.id,true)}>&#10084;</ButtonProfile>
                     </ButtonArea>
                 </div>
-                ):(
+                ):( // Se acabou, alerta que acabou e exibi botão para resetar
                 <div>     
                     <OverMatch>
                         <p>Estamos com problemas para achar novos profileis perto de você, tente resetar os Matchs</p>
@@ -132,10 +133,6 @@ const getMatch = (id,choice) => {
             }  
 
         </ProfilePage>
-        
-
-      
-
     )
 }
 
