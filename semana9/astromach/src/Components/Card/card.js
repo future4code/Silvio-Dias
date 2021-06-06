@@ -4,7 +4,7 @@ import { enterStudent, restartMatch} from '../api'
 
 import {PhotoProfile,ButtonArea,NameAge,
         ButtonProfile,ProfilePage,
-        Description,Bio,OverMatch } from './style'
+        Description,Bio,OverMatch,Photo } from './style'
 
 import { LoadingArea } from "../style"
 import Loading from '../Img/loading.svg'
@@ -16,11 +16,16 @@ const [profile, setProfile] = useState("") //Armazena perfil
 const [changeCard, setChangeCard] = useState(false) //Controlador de troca de card
 const [isMatch,setIsMach] = useState(false) // Verifica se teve Match
 const [hover,setHover] = useState([false]) //Verifica mouse nos botões
+const [position,setPosition] = useState("") //Verifica mouse nos botões
+const [directionCard,setDirectionCard] = useState("neutro") //Controle de swipe do card
+const [displayImage,setDisplayImage] = useState(true) //Controla se imagem aparece ou some
+
 
 useEffect(() => {
     getProfiles()
 
 }, [changeCard])
+
 
 
 const checkProfile = (response) =>{
@@ -55,7 +60,6 @@ const getMatch = (id,choice) => {
     }
 
     setProfile("") //Limpa profile para garantir loading do usuario
-    swapCard() //Troca de card
 
     axios
     .post(enterStudent() + "choose-person",body)
@@ -65,7 +69,8 @@ const getMatch = (id,choice) => {
         if(isMatch){
             alert('Eeeeeeita, vai q deu Match') //Alerta Match
         }
-        
+        swapCard() //Troca de card
+        setDirectionCard("neutro") //Neutraliza direção do card
     })
     .catch((err) => {
         alert(err)
@@ -87,10 +92,54 @@ const getMatch = (id,choice) => {
     
     }
 
+    const startDrag = (event) =>{
+        setPosition(event.clientX)
+        setTimeout(() => {
+            setDisplayImage(false)
+        }, 0)
+    }
+
+    const drag = (event) => {
+        const directionX = event.clientX
+        if(directionX !== 0 || event.clientX === position){ //Verifica se o card foi paralisado no dragg
+ 
+            if(directionX > 1200 && directionX > position){ // Controla a distancia para curtir em swipe
+                setDirectionCard("direita") 
+    
+            }else if(directionX < 850 && directionX < position){ //Controla distancia para negar sem swipe
+                setDirectionCard("esquerda")
+    
+            }else if(directionX > 850 && directionX < 1200){// Controla volta de card para centro
+                setDirectionCard("neutro")
+            }
+        }
+    }
+
+    const endDrag = (id,event) => {
+        if(directionCard === "direita"){
+            getMatch(id,true) //Curti em swipe
+        }else if(directionCard === "esquerda"){
+            getMatch(id,false) //Não em swipe
+        }
+        setDisplayImage(true)
+    }
+
+    const restartMatch = () =>{ //Reinicia API
+
+        axios
+        .put(enterStudent() + "clear")
+        .then((response) => {
+            swapCard() //Troca o card
+        })
+        .catch((err) => {
+            swapCard() //Troca o card
+            alert(err)
+        })
+    }
+
     const resetMatch = () =>{
-        restartMatch() // Reinicia API 
         setProfile("") // Limpa profile
-        swapCard() //Troca o card
+        restartMatch() // Reinicia API 
     }
 
     if(!profile){ //Exibir loading
@@ -100,20 +149,22 @@ const getMatch = (id,choice) => {
             </LoadingArea>
         )
     }
-
     return(
         <ProfilePage >
             {profile !== 'acabou' ? ( //Se não acabou, exibi card
                 <div>
-                    <PhotoProfile rotate = {hover} style={{ backgroundImage: `url(${profile.photo})` }}> 
-                        <Description>
-                        <NameAge>
-                            <h1>{profile.name}</h1>
-                            <p>,{profile.age}</p>
-                            </NameAge>
+                    <PhotoProfile directionCard = {directionCard}>
+                        {directionCard === "neutro" ? "":(directionCard ==="direita" ?(<h1>Curti</h1>):(<h1>Não</h1>))}
+                        <Photo show = {displayImage}   draggable onDrag = {drag} onDragEnd = {() => endDrag(profile.id)} onDragStart = {startDrag} rotate = {hover} style={{ backgroundImage: `url(${profile.photo})` }}> 
+                            <Description>
+                            <NameAge>
+                                <h1>{profile.name}</h1>
+                                <p>,{profile.age}</p>
+                                </NameAge>
 
-                            <Bio>{profile.bio}</Bio>
-                        </Description>
+                                <Bio>{profile.bio}</Bio>
+                            </Description>
+                        </Photo>
                     </PhotoProfile>
 
                     <ButtonArea>

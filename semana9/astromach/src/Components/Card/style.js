@@ -14,26 +14,55 @@ export const LoadingArea = styled.div`
 export const PhotoProfile = styled.div`
     width: 350px;
     height: 550px;
+    
+    box-shadow: ${props => props.directionCard === "neutro" ? "":(props.directionCard ==="direita" ?("0px 0px 6px #00b56f"):("0px 0px 6px #B54B46"))};
+    border-radius: 3%;
+
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+
+    transition: 0.3s;
+
+    h1{
+        color: ${props => props.directionCard === "neutro" ? "":(props.directionCard ==="direita" ?("#00CA79"):("#D8524A"))};
+
+    }
+
+    transform: ${props => props.rotate && props.rotate[0] ?
+      (props.rotate[1] === "cancel" ? "rotate(-7deg)":"rotate(7deg)"): ""};
+
+`
+
+export const Photo = styled.div`
+
+    display: ${props => props.show ? "flex;":"none;"};
+    flex-direction: column;
+    justify-content: flex-end;
+
+    width: 350px;
+    height: 550px;
 
     border-radius: 3%;
 
     background-size: cover;
     background-position:center;
 
-    display:flex;
-    flex-direction: column;
-    justify-content: flex-end;
-
     margin-bottom: 1rem;
     transition: 0.3s;
-    box-shadow: 0px 0px 6px black;
-    box-shadow: inset 0px -260px 127px -107px rgb(0 0 0 / 75%);
+    box-shadow: 0px 0px 6px black,
+     inset 0px -260px 127px -107px rgb(0 0 0 / 75%); 
 
     transform: ${props => props.rotate && props.rotate[0] ?
       (props.rotate[1] === "cancel" ? "rotate(-7deg)":"rotate(7deg)"): ""};
 
     h1{
         margin:0
+    }
+
+    &:hover{
+        cursor:move;
     }
 
 `
