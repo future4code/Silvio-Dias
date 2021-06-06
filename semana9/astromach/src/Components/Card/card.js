@@ -100,16 +100,16 @@ const getMatch = (id,choice) => {
     }
 
     const drag = (event) => {
-        const directionX = event.clientX
-        if(directionX !== 0 || event.clientX === position){ //Verifica se o card foi paralisado no dragg
+        const directionX = event.pageX
+        if(directionX !== 0 || directionX === position){ //Verifica se o card foi paralisado no dragg
  
-            if(directionX > 1200 && directionX > position){ // Controla a distancia para curtir em swipe
+            if(directionX > position + 100){ // Controla a distancia para curtir em swipe
                 setDirectionCard("direita") 
     
-            }else if(directionX < 850 && directionX < position){ //Controla distancia para negar sem swipe
+            }else if(directionX < position - 100){ //Controla distancia para negar sem swipe
                 setDirectionCard("esquerda")
     
-            }else if(directionX > 850 && directionX < 1200){// Controla volta de card para centro
+            }else if(directionX <= position + 50 || directionX >= position - 50  ){// Controla volta de card para centro
                 setDirectionCard("neutro")
             }
         }
