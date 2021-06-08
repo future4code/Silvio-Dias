@@ -1,6 +1,7 @@
 import React from 'react'
-import Cards from './components/Cards/Cards'
-import HomePage from './pages/HomePage'
+import ApplicationFormPage from './pages/ApplicationFormPage'
+import CreateTripPage from './pages/CreateTripPage'
+
 
 import { Main } from "./styled"
 
@@ -9,8 +10,8 @@ import { Main } from "./styled"
 function App() {
   return (
     <Main>
-      <HomePage/>
-      <Cards/>
+      <ApplicationFormPage/>
+      <CreateTripPage/>
     </Main>
   )
 }
