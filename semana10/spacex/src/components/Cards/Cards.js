@@ -1,11 +1,14 @@
 import React from 'react'
 import useTrips from '../../hooks/useTrips'
+import { useHistory } from "react-router-dom";
+import { goTo } from '../../routes/Cordinator';
 
 function Cards(props) {
+    const history = useHistory()
 
-        const Trips = useTrips("trips",
-        "",
-        [{}])
+    const Trips = useTrips("trips",
+    "",
+    [{}])
 
 
     const tripList = Trips && Trips.map((trip) => {
@@ -17,7 +20,7 @@ function Cards(props) {
                     <p>{trip.planet}</p>
                     <p>{trip.durationInDays}</p>
                     <p>{trip.date}</p>
-                    <button onClick = {trip.id}>Candidatar</button>
+                    <button onClick = {() => goTo(history,"/cadastro-candidatura")}>Candidatar</button>
                 
                 </div>
             )

@@ -4,7 +4,7 @@ function Button(props) {
     return (
         <div>
             <button onClick = {props.action} customStyle = {props.style}>
-                {props.texto}
+                {props.text}
             </button>
         </div>
     )

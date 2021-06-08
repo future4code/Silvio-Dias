@@ -1,7 +1,11 @@
 import React from 'react'
 import useInput from '../hooks/useInput'
 
+
+
 function LoginPage() {
+    const history = useHistory()
+    
     const [login, setLogin] = useInput('')
     const [senha,setSenha] = useInput('')
 
@@ -11,6 +15,7 @@ function LoginPage() {
             <input placeholder = "Nome" type = "text" onChange = {setLogin}/>
             <input placeholder = "Nome" type = "password" onChange = {setSenha}/>
             <button>Imprimir</button>
+            <Button text = "Voltar" action = {() => goToBack(history)}/>
         </div>
     )
 }

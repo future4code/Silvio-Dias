@@ -1,17 +1,18 @@
 import React from 'react'
-import ApplicationFormPage from './pages/ApplicationFormPage'
-import CreateTripPage from './pages/CreateTripPage'
+import Button from './components/Buttons/Button'
+import { goToBack } from './routes/Cordinator'
+import { useHistory } from "react-router-dom";
+import Router from './routes/Router'
+
 
 
 import { Main } from "./styled"
 
-
-
 function App() {
+  const history = useHistory()
   return (
     <Main>
-      <ApplicationFormPage/>
-      <CreateTripPage/>
+      <Router/>
     </Main>
   )
 }
