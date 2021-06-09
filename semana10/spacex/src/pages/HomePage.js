@@ -2,23 +2,22 @@ import React from 'react'
 import Button from '../components/Buttons/Button';
 import { useHistory } from "react-router-dom";
 import { goTo } from '../routes/Cordinator';
+import { ButtonArea,HomeArea } from './style'
 
 
 
 function HomePage() {
     const history = useHistory()
 
-    console.log(history)
-
     return (
-        <div>
-            <h1>Space X</h1>
-            <Button text = "Viagens" action = {() => goTo(history,"/viagens")}/>
-            <Button/>      
-            <Button text = "Area de Administrador" action = {() => goTo(history,"/admin")}/>
-            <Button/>                
-            <Button text = "Voltar" action = {() => goToBack(history)}/>
-        </div>
+        <HomeArea>
+            <h1>SpaceX</h1>
+            <ButtonArea directionFlex>
+                <Button  text = "Viagens" action = {() => goTo(history,"/viagens")}/> 
+                <Button  text = "Admin" action = {() => goTo(history,"/login")}/>    
+            </ButtonArea>
+        
+        </HomeArea>
     )
 }
 

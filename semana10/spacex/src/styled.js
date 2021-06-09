@@ -1,12 +1,21 @@
 import styled from "styled-components"
+import { baseColor, primaryColor } from "./constants/colors"
 
 export const Main = styled.div`
- box-sizing: border-box;
- margin: 0;
- padding: 0;
+    width: 100vw;
+    height:100vh;
 
-    button{
-        border:none;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: ${primaryColor};
+
+    h1{
+        color: ${baseColor}
     }
 
 `

@@ -1,12 +1,14 @@
 import React from 'react'
+import {ButtonStyle} from './styled'
 
 function Button(props) {
     return (
-        <div>
-            <button onClick = {props.action} customStyle = {props.style}>
+        <div>   
+            <ButtonStyle onClick = {props.action} customStyle = {props.style}>
                 {props.text}
-            </button>
+            </ButtonStyle>
         </div>
+
     )
 }
 
