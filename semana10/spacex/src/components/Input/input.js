@@ -2,6 +2,7 @@ import React from 'react'
 import SelectCountry from './SelectCountry'
 import useInput from '../../hooks/useInput'
 import Button from '../Buttons/Button'
+import useRegister from '../../hooks/useRegister'
 
 export function Input(props) {
     const [name,setName] = useInput('')
@@ -10,9 +11,29 @@ export function Input(props) {
     const [ocupation,setOcupation] = useInput('')
     const [place,setPlace] = useInput('')
 
-    const teste = () => {
-        console.log(name)
+    const id = ""
+    const body = {}
+
+    
+    if(!props.admin){
+        body = {
+            "name": name,
+            "age": date,
+            "applicationText": messege,
+            "profession": ocupation,
+            "country": place
+        }
+    }else{
+        body = {
+            "name": name,
+            "planet":place,
+            "date": date,
+            "description":messege ,
+            "durationInDays":ocupation
+        }
     }
+       
+
 
     return (
         <div>
@@ -23,7 +44,7 @@ export function Input(props) {
             <SelectCountry action = {setPlace} admin = {!props.admin}/>
             <Button 
             texto = {props.admin? "Cadastrar":"Enviar Pedido"}
-            action = {teste}
+            action = {() => useRegister(id,body)}
             customStyle = {"Primary"}
             />
         </div>  
