@@ -5,8 +5,7 @@ import { goTo,goToBack } from '../routes/Cordinator';
 import Button from "../components/Buttons/Button"
 import useProtectedPage from "../hooks/useProtectedPage"
 import useTrips from '../hooks/useTrips';
-
-
+import { ButtonBack}  from "../components/Buttons/ButtonBack"
 
 
 function AdminHomePage() {
@@ -14,15 +13,31 @@ function AdminHomePage() {
 
     useProtectedPage()
 
+    const Trips = useTrips("/trips"
+    ,"",[{}])
+
+    const listTrips = Trips.map((trip) => {
+        return(
+            <div>
+            <Cards
+                customStyle = "admin"
+                name = {trip.name}
+                textButton = "Saiba Mais"
+                buttonStyle = "secondary"
+            />
+        </div>
+        )
+
+
+    })
+
     return (
         <div>
-            <Cards
-                typeList = "admin"
-            />
-
-            <Button text = "Cadastrar Viagem" action = {() => goTo(history,"/cadastro-viagem")}/>
+            {listTrips}
             <Button text = "Logout"/>
-            <Button customStyle = "secondary" text = "Voltar" action = {() => goToBack(history)}/>
+            <ButtonBack
+            h = {history}
+            /> 
         </div>
 
     )

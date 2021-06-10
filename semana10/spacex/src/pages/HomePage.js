@@ -14,7 +14,7 @@ function HomePage() {
             <h1>SpaceX</h1>
             <ButtonArea directionFlex>
                 <Button  text = "Viagens" action = {() => goTo(history,"/viagens")}/> 
-                <Button  text = "Admin" action = {() => goTo(history,"/login")}/>    
+                <Button  text = "Admin" action = {() => goTo(history, localStorage.getItem("token") ? "/admin":"/login")}/>    
             </ButtonArea>
         
         </HomeArea>

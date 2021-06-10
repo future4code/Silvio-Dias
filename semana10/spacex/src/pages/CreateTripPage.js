@@ -1,8 +1,7 @@
 import React from 'react'
 import Input from '../components/Input/input'
 import { useHistory } from "react-router-dom";
-import { goTo,goToBack } from '../routes/Cordinator';
-import Button from "../components/Buttons/Button"
+import { ButtonBack}  from "../components/Buttons/ButtonBack"
 import useProtectedPage from "../hooks/useProtectedPage"
 
 
@@ -17,7 +16,9 @@ function CreateTripPage() {
             <Input
             admin = {true}
             />
-            <Button customStyle = "secondary" text = "Voltar" action = {() => goToBack(history)}/>
+            <ButtonBack
+                h = {history}
+            />    
         </div>
     )
 }

@@ -14,9 +14,9 @@ export const ButtonStyle = styled.button( ({customStyle}) =>`
     color: ${baseColor}; 
     border: 1px solid ${baseColor};
     background-color: ${customStyle == "secondary" ? secondaryColor: "none" };
-    font-size: x-large;
+    font-size: large;
     border-radius: 3%;
-    padding: 1rem;
+    padding: 0.5rem;
 
 
     &:hover{

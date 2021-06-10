@@ -1,25 +1,43 @@
 import React from 'react'
 import useTrips from "../hooks/useTrips"
 import { useHistory } from "react-router-dom";
-import { goTo,goToBack } from '../routes/Cordinator';
-import Button from "../components/Buttons/Button"
+import { ButtonBack}  from "../components/Buttons/ButtonBack"
 import useProtectedPage from "../hooks/useProtectedPage"
+import Card from "../components/Cards/Cards"
 
 
 function TripDetailsPage(props) {
     const history = useHistory()
     useProtectedPage()
 
-        const Trips = useTrips("trip",
+        const Trips = useTrips("/trip",
             "91va6kmh7uIFrYO5HUJz",
             {})
-    
-        if(Trips){
-            console.log(Trips)
-        }
+
+        const listCandidates = Trips.candidates.map((candidate) => {
+            return(
+                <Card
+                name = {candidate.name}
+                description = {candidate.applicationText}
+                place = {candidate.country}
+                ocupation = {candidate.profession}
+                date = {candidate.age}
+                textButton = "Aprovar"           
+                />
+            )
+        })
+
     return (
         <div>
-        <Button customStyle = "secondary" text = "Voltar" action = {() => goToBack(history)}/>
+            <h1>{Trips.name}</h1>
+            <p>{Trips.description}</p>
+            <p>{Trips.planet}</p>
+            <p>{Trips.date}</p>
+            <p>{Trips.durationInDays}</p>
+            {listCandidates}
+            <ButtonBack
+                h = {history}
+            /> 
         </div>
     )
 }

@@ -1,13 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import axios from "axios"
 import useInput from '../hooks/useInput'
-import { useHistory } from "react-router-dom";
-import { goTo,goToBack } from '../routes/Cordinator';
+import { useHistory } from "react-router-dom"
 import { BASE_URL }  from "../constants/url"
 
+import { ButtonBack}  from "../components/Buttons/ButtonBack"
 import Button from "../components/Buttons/Button"
-
-
 
 
 function LoginPage() {
@@ -19,15 +17,13 @@ function LoginPage() {
     const getLogin = () => {
         const body = {email:login,password:senha}
         axios
-        .post(`${BASE_URL}login`, body)
+        .post(`${BASE_URL}/login`, body)
         .then((res) => {
             localStorage.setItem("token", res.data.token);
-            history.push("/detalhes-de-viagem");
+            history.push("/admin");
         })
         .catch((err) => alert(err.response.data.message));
-        
     }
-
 
     return (
         <div>
@@ -35,8 +31,10 @@ function LoginPage() {
             <input  required placeholder = "E-mail" type = "email" onChange = {setLogin}/>
             <input  required placeholder = "Senha" type = "password" onChange = {setSenha}/>
             <Button text = "Login" action = {getLogin}/>
-            <Button customStyle = "secondary" text = "Voltar" action = {() => goToBack(history)}/>
-        </div>
+            <ButtonBack
+                h = {history}
+            /> 
+            </div>
     )
 }
 

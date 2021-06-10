@@ -1,15 +1,14 @@
 import React from 'react'
 import Cards from "../components/Cards/Cards"
 import { useHistory } from "react-router-dom";
-import { goTo,goToBack } from '../routes/Cordinator';
-import Button from "../components/Buttons/Button"
+import { ButtonBack}  from "../components/Buttons/ButtonBack"
 import useTrips from "../hooks/useTrips"
 import { AreaCard } from '../components/Cards/styled';
 
 function ListTripsPage(props) {
     const history = useHistory()
 
-    const Trips = useTrips("trips"
+    const Trips = useTrips("/trips"
     ,"",[{}])
 
     console.log(Trips)
@@ -18,11 +17,14 @@ function ListTripsPage(props) {
         return (
             <div>
                 <Cards
+                    customStyle = "user"
                     name = {trip.name}
                     description = {trip.description}
                     place = {trip.planet}
                     ocupation = {trip.durationInDays}
                     date = {trip.date}
+                    textButton = {"Cadastrar"}
+                    buttonStyle = "secondary"
                 />
             </div>
 
@@ -34,8 +36,10 @@ return (
         <AreaCard>
             {listTrip}
         </AreaCard>
-        <Button customStyle = "secondary" text = "Voltar" action = {() => goToBack(history)}/>
-    </div>
+        <ButtonBack
+            h = {history}
+            />     
+        </div>
 )
 }
 
