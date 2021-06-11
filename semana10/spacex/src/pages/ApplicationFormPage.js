@@ -1,15 +1,19 @@
 import React from 'react'
-import Input from '../components/Input/input'
-import { useHistory } from "react-router-dom";
+import Form from '../components/Input/form'
+import { useHistory,useParams } from "react-router-dom";
 import { ButtonBack}  from "../components/Buttons/ButtonBack"
 
 
 function ApplicationFormPage() {
     const history = useHistory()
+    const params = useParams()
+
 
     return (
         <div>
-            <Input/>
+            <Form
+            id = {params.id}
+            />
             <ButtonBack
                 h = {history}
             />        

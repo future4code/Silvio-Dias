@@ -1,29 +1,36 @@
 import React from 'react'
 import useTrips from "../hooks/useTrips"
-import { useHistory } from "react-router-dom";
+import { useHistory,useParams } from "react-router-dom";
 import { ButtonBack}  from "../components/Buttons/ButtonBack"
 import useProtectedPage from "../hooks/useProtectedPage"
 import Card from "../components/Cards/Cards"
+import { AreaCard } from './style';
 
 
 function TripDetailsPage(props) {
-    const history = useHistory()
+
     useProtectedPage()
 
-        const Trips = useTrips("/trip",
-            "91va6kmh7uIFrYO5HUJz",
-            {})
+    const history = useHistory()
+    const params = useParams()
 
-        const listCandidates = Trips.candidates.map((candidate) => {
+        const Trips = useTrips("/trip",
+            params.id,
+            {})
+        console.log(Trips)
+
+        const listCandidates = Trips.candidates && Trips.candidates.map((candidate) => {
             return(
-                <Card
-                name = {candidate.name}
-                description = {candidate.applicationText}
-                place = {candidate.country}
-                ocupation = {candidate.profession}
-                date = {candidate.age}
-                textButton = "Aprovar"           
-                />
+
+                    <Card
+                    name = {candidate.name}
+                    description = {candidate.applicationText}
+                    place = {candidate.country}
+                    ocupation = {candidate.profession}
+                    date = {candidate.age}
+                    textButton = "Aprovar"           
+                    />
+
             )
         })
 
@@ -34,7 +41,9 @@ function TripDetailsPage(props) {
             <p>{Trips.planet}</p>
             <p>{Trips.date}</p>
             <p>{Trips.durationInDays}</p>
-            {listCandidates}
+            <AreaCard>
+                {listCandidates}
+            </AreaCard> 
             <ButtonBack
                 h = {history}
             /> 

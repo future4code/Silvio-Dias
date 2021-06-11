@@ -15,6 +15,7 @@ return (
             <Button
             text = {props.textButton}
             customStyle = {props.buttonStyle}
+            action = {props.actionButton}
             />
         </Card>
 )

@@ -1,10 +1,8 @@
 import React from 'react'
-import Input from '../components/Input/input'
+import Form from '../components/Input/form'
 import { useHistory } from "react-router-dom";
 import { ButtonBack}  from "../components/Buttons/ButtonBack"
 import useProtectedPage from "../hooks/useProtectedPage"
-
-
 
 function CreateTripPage() {
     const history = useHistory()
@@ -13,7 +11,7 @@ function CreateTripPage() {
 
     return (
         <div>
-            <Input
+            <Form
             admin = {true}
             />
             <ButtonBack

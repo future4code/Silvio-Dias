@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { useState,useEffect } from 'react'
-import {BASE_URL} from "../constants/url"
+import {BASE_URL,headers} from "../constants/url"
 
     const useTrips = (url,id,initialValue) => {
 
@@ -8,21 +8,13 @@ import {BASE_URL} from "../constants/url"
 
       const getTrips = () => {
 
-        const headers = {
-          headers: {
-            auth: localStorage.getItem("token")
-          }
-        }
-
-        console.log(headers)
-        console.log(id)
-        console.log(url)
 
         axios
         .get(`${BASE_URL+url}/${id}`,headers)
         .then((response) => {
           if(url === "/trips"){
             setTrips(response.data.trips)
+            console.log(response)
           }else{
             setTrips(response.data.trip)
             console.log(response)

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import axios from "axios"
-import useInput from '../hooks/useInput'
+import useForm from '../hooks/useForm'
 import { useHistory } from "react-router-dom"
 import { BASE_URL }  from "../constants/url"
 
@@ -11,8 +11,8 @@ import Button from "../components/Buttons/Button"
 function LoginPage() {
     const history = useHistory()
     
-    const [login, setLogin] = useInput('')
-    const [senha,setSenha] = useInput('')
+    const [login, setLogin] = useForm('')
+    const [senha,setSenha] = useForm('')
     
     const getLogin = () => {
         const body = {email:login,password:senha}

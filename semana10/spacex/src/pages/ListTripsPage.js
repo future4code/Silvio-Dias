@@ -3,7 +3,7 @@ import Cards from "../components/Cards/Cards"
 import { useHistory } from "react-router-dom";
 import { ButtonBack}  from "../components/Buttons/ButtonBack"
 import useTrips from "../hooks/useTrips"
-import { AreaCard } from '../components/Cards/styled';
+import { AreaCard } from './style';
 
 function ListTripsPage(props) {
     const history = useHistory()
@@ -11,7 +11,9 @@ function ListTripsPage(props) {
     const Trips = useTrips("/trips"
     ,"",[{}])
 
-    console.log(Trips)
+    const goToCandidate = (id) => {
+        history.push(`cadastro-candidatura/${id}`);
+    }
 
     const listTrip = Trips.map((trip) =>{
         return (
@@ -23,8 +25,11 @@ function ListTripsPage(props) {
                     place = {trip.planet}
                     ocupation = {trip.durationInDays}
                     date = {trip.date}
+                    action = {() => alert('oi')}
                     textButton = {"Cadastrar"}
                     buttonStyle = "secondary"
+                    actionButton = {() => goToCandidate(trip.id)}
+
                 />
             </div>
 

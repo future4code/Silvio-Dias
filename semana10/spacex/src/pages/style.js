@@ -17,3 +17,8 @@ justify-content: center;
 align-items: center;
 
 `
+
+export const AreaCard = styled.div`
+    height: 80vh;
+    overflow: auto;
+`

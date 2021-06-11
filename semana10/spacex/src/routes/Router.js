@@ -32,11 +32,11 @@ function Router() {
                 <CreateTripPage/>
             </Route>
 
-            <Route exact path = "/cadastro-candidatura">
+            <Route exact path = "/cadastro-candidatura/:id">
                <ApplicationFormPage/>
             </Route>
 
-            <Route exact path = "/detalhes-de-viagem">
+            <Route exact path = "/detalhes-de-viagem/:id">
                 <TripDetailsPage/>
             </Route>
 
