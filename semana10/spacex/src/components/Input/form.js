@@ -4,6 +4,7 @@ import useForm from '../../hooks/useForm'
 import Button from '../Buttons/Button'
 import { BASE_URL,headers } from '../../constants/url'
 import axios from "axios"
+import { AreaForm } from "./styled"
 
 export function Form(props) {
     const { form, onChange } = useForm({id: props.id})
@@ -24,8 +25,8 @@ export function Form(props) {
       };
 
     return (
-        <div>
-            <form id = "form" onSubmit = {cadastrar}>
+
+            <AreaForm id = "form" onSubmit = {cadastrar}>
 
             <input
                 name = {"name"}
@@ -45,7 +46,6 @@ export function Form(props) {
                 type = "date"
                 onChange = {onChange}
                 placeholder = {props.admin? "Data de viagem":"Data de Nascimento"} 
-                type = "text"
             />
             <input 
                 name = {props.admin? "durationInDays":"profession" }
@@ -66,8 +66,7 @@ export function Form(props) {
             customStyle = {"Primary"}
             />
 
-            </form>
-        </div>  
+            </AreaForm>
     )
 }
 

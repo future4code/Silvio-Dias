@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import Cards from '../components/Cards/Cards'
 import { useHistory } from "react-router-dom";
 import Button from "../components/Buttons/Button"
@@ -7,10 +7,12 @@ import useTrips from '../hooks/useTrips';
 import { ButtonBack}  from "../components/Buttons/ButtonBack"
 import axios from "axios"
 import { BASE_URL, headers } from "../constants/url"
+import loading from "../Image/loading.svg"
 
 
 function AdminHomePage() {
     const history = useHistory()
+    const [deleted,setDeleted] = useState(false)
 
     useProtectedPage()
 
@@ -21,38 +23,50 @@ function AdminHomePage() {
         history.push(`detalhes-de-viagem/${id}`);
     }
 
+    const goToRegisterTrip = (id) => {
+        history.push(`cadastro-viagem`);
+    }
+
     const deleteTrip = (id) => {
-        console.log(BASE_URL + "/trips", id, headers)
-        axios
+        const checkDelete = window.confirm("Tem certeza que quer deletar?")
+        if(checkDelete){
+            axios
         .delete(`${BASE_URL}/trips/${id}`,headers)
         .then((response) => {
-            console.log(response)
+            history.push(`admin`);
         })
         .catch((err) => {
             console.log(err)
         })
+        }
+        
     }
     
     const listTrips = Trips.map((trip) => {
         return(
-            <div>
             <Cards
                 customStyle = "admin"
-                name = {trip.name}
-                textButton = "Saiba Mais"
+                name = {<a onClick = {() => goToDetailPage(trip.id)}>{trip.name}</a>}
+                textButton = "Apagar"
                 buttonStyle = "secondary"
                 actionButton = {() => deleteTrip(trip.id)}
             />
-        </div>
         )
-
-
     })
 
+    if(Trips.length <= 1){
+        return(
+            <img src= {loading}></img> 
+        )
+    }
+    
     return (
         <div>
             {listTrips}
+
             <Button text = "Logout"/>
+            <Button action = {goToRegisterTrip} text = "Cadastrar Viagem"/>
+
             <ButtonBack
             h = {history}
             /> 

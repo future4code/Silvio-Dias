@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import { ButtonBack}  from "../components/Buttons/ButtonBack"
 import useTrips from "../hooks/useTrips"
 import { AreaCard } from './style';
+import loading from "../Image/loading.svg"
 
 function ListTripsPage(props) {
     const history = useHistory()
@@ -35,6 +36,12 @@ function ListTripsPage(props) {
 
         )
     })
+
+    if(Trips.length <= 1){
+        return(
+            <img src= {loading}></img> 
+        )
+    }
 
 return (
     <div>

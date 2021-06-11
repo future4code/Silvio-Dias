@@ -14,10 +14,8 @@ import {BASE_URL,headers} from "../constants/url"
         .then((response) => {
           if(url === "/trips"){
             setTrips(response.data.trips)
-            console.log(response)
           }else{
             setTrips(response.data.trip)
-            console.log(response)
           }
 
         })
@@ -30,7 +28,7 @@ import {BASE_URL,headers} from "../constants/url"
       useEffect(() => {
         getTrips()
       }, [])
-
+      console.log(trips)
       return trips
     }
     

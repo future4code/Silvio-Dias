@@ -5,6 +5,10 @@ import { ButtonBack}  from "../components/Buttons/ButtonBack"
 import useProtectedPage from "../hooks/useProtectedPage"
 import Card from "../components/Cards/Cards"
 import { AreaCard } from './style';
+import { BASE_URL, headers } from '../constants/url';
+import axios from "axios"
+import loading from "../Image/loading.svg"
+
 
 
 function TripDetailsPage(props) {
@@ -17,7 +21,21 @@ function TripDetailsPage(props) {
         const Trips = useTrips("/trip",
             params.id,
             {})
-        console.log(Trips)
+
+        console.log(Trips.length)
+
+        const decideCandidate = (id) => {
+            const body = {approve: true}
+
+            axios
+            .put(`${BASE_URL}/trips/${params.id}/candidates/${id}/decide`,body,headers)
+            .then((response) => {
+                alert(response.data.message)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+        }
 
         const listCandidates = Trips.candidates && Trips.candidates.map((candidate) => {
             return(
@@ -28,11 +46,35 @@ function TripDetailsPage(props) {
                     place = {candidate.country}
                     ocupation = {candidate.profession}
                     date = {candidate.age}
-                    textButton = "Aprovar"           
+                    textButton = "Aprovar"   
+                    actionButton = {() => decideCandidate(candidate.id)}        
                     />
 
             )
         })
+
+        const listApproved = Trips.approved && Trips.approved.map((candidate) => {
+            
+            return(
+                <Card
+                name = {candidate.name}
+                description = {candidate.applicationText}
+                place = {candidate.country}
+                ocupation = {candidate.profession}
+                date = {candidate.age}
+                textButton = "Aprovar"   
+                actionButton = {() => decideCandidate(candidate.id)}        
+                />
+            )
+
+        })
+
+
+        if(Trips.length ===false){
+            return(
+                <img src= {loading}></img> 
+            )
+        }
 
     return (
         <div>
@@ -44,6 +86,8 @@ function TripDetailsPage(props) {
             <AreaCard>
                 {listCandidates}
             </AreaCard> 
+                {Trips.approved && Trips.approved.length > 0 && <h1>Aprovados</h1>}
+                {listApproved}
             <ButtonBack
                 h = {history}
             /> 
