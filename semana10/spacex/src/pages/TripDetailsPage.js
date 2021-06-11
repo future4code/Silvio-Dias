@@ -22,7 +22,7 @@ function TripDetailsPage(props) {
             params.id,
             {})
 
-        console.log(Trips.length)
+        console.log(Trips)
 
         const decideCandidate = (id) => {
             const body = {approve: true}
@@ -70,7 +70,7 @@ function TripDetailsPage(props) {
         })
 
 
-        if(Trips.length ===false){
+        if(!Trips.candidates){
             return(
                 <img src= {loading}></img> 
             )
