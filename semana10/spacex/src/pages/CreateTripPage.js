@@ -3,6 +3,7 @@ import Form from '../components/Input/form'
 import { useHistory } from "react-router-dom";
 import { ButtonBack}  from "../components/Buttons/ButtonBack"
 import useProtectedPage from "../hooks/useProtectedPage"
+import { ButtonArea } from "./style"
 
 function CreateTripPage() {
     const history = useHistory()
@@ -14,9 +15,11 @@ function CreateTripPage() {
             <Form
             admin = {true}
             />
-            <ButtonBack
-                h = {history}
-            />    
+            <ButtonArea>
+                <ButtonBack
+                    h = {history}
+                />    
+            </ButtonArea>
         </div>
     )
 }

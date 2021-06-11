@@ -8,6 +8,7 @@ import { ButtonBack}  from "../components/Buttons/ButtonBack"
 import axios from "axios"
 import { BASE_URL, headers } from "../constants/url"
 import loading from "../Image/loading.svg"
+import { ButtonArea } from "./style"
 
 
 function AdminHomePage() {
@@ -23,7 +24,7 @@ function AdminHomePage() {
         history.push(`detalhes-de-viagem/${id}`);
     }
 
-    const goToRegisterTrip = (id) => {
+    const goToRegisterTrip = () => {
         history.push(`cadastro-viagem`);
     }
 
@@ -62,14 +63,16 @@ function AdminHomePage() {
     
     return (
         <div>
+            <ButtonArea directionFlex={true}>
+                <Button text = "Logout"/>
+                <Button action = {goToRegisterTrip} text = "Cadastrar Viagem"/>
+
+                <ButtonBack
+                h = {history}
+                /> 
+            </ButtonArea>
             {listTrips}
-
-            <Button text = "Logout"/>
-            <Button action = {goToRegisterTrip} text = "Cadastrar Viagem"/>
-
-            <ButtonBack
-            h = {history}
-            /> 
+       
         </div>
 
     )

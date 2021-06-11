@@ -3,7 +3,7 @@ import Cards from "../components/Cards/Cards"
 import { useHistory } from "react-router-dom";
 import { ButtonBack}  from "../components/Buttons/ButtonBack"
 import useTrips from "../hooks/useTrips"
-import { AreaCard } from './style';
+import { AreaCard,ButtonArea } from './style';
 import loading from "../Image/loading.svg"
 
 function ListTripsPage(props) {
@@ -48,9 +48,12 @@ return (
         <AreaCard>
             {listTrip}
         </AreaCard>
-        <ButtonBack
-            h = {history}
-            />     
+        <ButtonArea>
+            <ButtonBack
+                h = {history}
+                />   
+        </ButtonArea>
+  
         </div>
 )
 }

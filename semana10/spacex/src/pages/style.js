@@ -2,7 +2,8 @@ import styled from "styled-components"
 
 export const ButtonArea = styled.div( ({ directionFlex }) =>`
     display:flex;
-    flex-direction: ${directionFlex ? "flex;":"column;"};
+    flex-direction: flex;
+    justify-content: center;
 
     button{
         margin-right:1rem;

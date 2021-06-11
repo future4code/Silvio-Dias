@@ -3,6 +3,7 @@ import axios from "axios"
 import useForm from '../hooks/useForm'
 import { useHistory } from "react-router-dom"
 import { BASE_URL }  from "../constants/url"
+import { ButtonArea } from "./style"
 
 import { ButtonBack}  from "../components/Buttons/ButtonBack"
 import Button from "../components/Buttons/Button"
@@ -30,10 +31,12 @@ function LoginPage() {
             <h1>Login</h1>
             <input  required placeholder = "E-mail" type = "email" onChange = {setLogin}/>
             <input  required placeholder = "Senha" type = "password" onChange = {setSenha}/>
-            <Button text = "Login" action = {getLogin}/>
-            <ButtonBack
-                h = {history}
-            /> 
+            <ButtonArea>
+                <Button text = "Login" action = {getLogin}/>
+                <ButtonBack
+                    h = {history}
+                /> 
+            </ButtonArea>
             </div>
     )
 }

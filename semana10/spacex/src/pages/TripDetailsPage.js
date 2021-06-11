@@ -8,7 +8,7 @@ import { AreaCard } from './style';
 import { BASE_URL, headers } from '../constants/url';
 import axios from "axios"
 import loading from "../Image/loading.svg"
-
+import { ButtonArea } from "./style"
 
 
 function TripDetailsPage(props) {
@@ -88,9 +88,12 @@ function TripDetailsPage(props) {
             </AreaCard> 
                 {Trips.approved && Trips.approved.length > 0 && <h1>Aprovados</h1>}
                 {listApproved}
-            <ButtonBack
-                h = {history}
-            /> 
+            <ButtonArea>
+                <ButtonBack
+                    h = {history}
+                /> 
+            </ButtonArea>
+
         </div>
     )
 }
