@@ -1,10 +1,10 @@
 import React from 'react'
 import axios from "axios"
-import loading from "../../Image/loading.svg"
 import useTrips from "../../hooks/useTrips"
 import Card from "./Cards"
 import { BASE_URL, headers } from '../../constants/url';
 import { useParams } from "react-router-dom";
+import { loadingPage } from '../../scripts/loading'
 
 
 function CandidateCard(props) {
@@ -14,7 +14,6 @@ function CandidateCard(props) {
     const Trips = useTrips("/trip",
     params.id,
     {})
-
 
     const decideCandidate = (id) => {
         const body = {approve: true}
@@ -44,16 +43,9 @@ function CandidateCard(props) {
         )
     })
 
-    
-    if(!Trips.candidates){
-        return(
-            <img src= {loading}></img> 
-        )
-    }
-
     return (
         <div>
-            {listCandidates}
+            {!Trips.candidates ? loadingPage():listCandidates}
         </div>
     )
 }

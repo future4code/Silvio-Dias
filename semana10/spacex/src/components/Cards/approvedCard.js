@@ -1,19 +1,14 @@
 import React from 'react'
-import loading from "../../Image/loading.svg"
 import useTrips from "../../hooks/useTrips"
 import Card from "./Cards"
+import { loadingPage } from '../../scripts/loading'
 
 function ApprovedCard(props) {
     const params = props.params
 
-    
     const Trips = useTrips("/trip",
     params.id,
     {})
-
-
-
-    console.log(Trips.approved)
 
     const listApproved = Trips.approved && Trips.approved.map((candidate) => {
             
@@ -30,16 +25,9 @@ function ApprovedCard(props) {
 
     })
     
-    if(!Trips.approved){
-        return(
-            <img src= {loading}></img> 
-        )
-    }
-
-
     return (
         <div>
-            {listApproved}
+            {!Trips.approved?loadingPage():listApproved}
         </div>
     )
 }

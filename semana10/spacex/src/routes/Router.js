@@ -1,7 +1,5 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-
-
 import HomePage from '../pages/HomePage';
 import ListTripsPage from '../pages/ListTripsPage';
 import AdminHomePage from '../pages/AdminHomePage';
@@ -28,7 +26,7 @@ function Router() {
                 <AdminHomePage/>
             </Route>
 
-            <Route exact path = "/cadastro-viagem">
+            <Route exact path = "/admin/cadastro-viagem/">
                 <CreateTripPage/>
             </Route>
 
@@ -36,7 +34,7 @@ function Router() {
                <ApplicationFormPage/>
             </Route>
 
-            <Route exact path = "/detalhes-de-viagem/:id">
+            <Route exact path = "/admin/detalhes-de-viagem/:id">
                 <TripDetailsPage/>
             </Route>
 

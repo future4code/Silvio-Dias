@@ -10,7 +10,7 @@ export const checkDate = (date) => {
     const dayInput = currentTime.getDay()
 
     const age = yearCurrent - yearInput
-
+    console.log(date)
     console.log(inputDate)
 
     if(age >= 18){

@@ -12,12 +12,15 @@ export function Form(props) {
 
     const cadastrar = (event) => {
         event.preventDefault();
-
-        if(checkDate(form.age)){
+        if(props.admin || checkDate(form.age)){
             axios
             .post(`${BASE_URL}/trips${!props.admin ? `/${form.id}/apply`:""}`,form,headers)
             .then((response) => {
-                alert("Recebemos a sua candidatura")
+                if(props.admin){
+                    alert("Viagem cadastrada")
+                }else{
+                    alert("Recebemos a sua candidatura")
+                }
                 document.getElementById('form').reset()
             })
             .catch((err) => {

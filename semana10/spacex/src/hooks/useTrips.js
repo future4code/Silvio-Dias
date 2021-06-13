@@ -8,7 +8,6 @@ import {BASE_URL,headers} from "../constants/url"
 
       const getTrips = () => {
 
-
         axios
         .get(`${BASE_URL+url}/${id}`,headers)
         .then((response) => {

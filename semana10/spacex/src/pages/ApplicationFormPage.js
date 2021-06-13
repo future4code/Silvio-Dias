@@ -4,7 +4,6 @@ import { useHistory,useParams } from "react-router-dom";
 import { ButtonBack}  from "../components/Buttons/ButtonBack"
 import { ButtonArea } from "./style"
 
-
 function ApplicationFormPage() {
     const history = useHistory()
     const params = useParams()

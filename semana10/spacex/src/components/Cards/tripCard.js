@@ -2,7 +2,7 @@ import React from 'react'
 import Cards from './Cards'
 import { useHistory } from "react-router-dom";
 import useTrips from "../../hooks/useTrips"
-import loading from "../../Image/loading.svg"
+import { loadingPage } from '../../scripts/loading';
 
 function TripCard() {
 
@@ -32,20 +32,12 @@ function TripCard() {
 
                 />
             </div>
-
         )
     })
 
-    
-    if(Trips.length <= 1){
-        return(
-            <img src= {loading}></img> 
-        )
-    }
-
     return (
         <div>
-            {listTrip}
+            {Trips.length <= 1? loadingPage():listTrip}
         </div>
     )
 }

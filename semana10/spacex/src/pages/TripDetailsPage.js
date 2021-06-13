@@ -4,9 +4,6 @@ import { useHistory,useParams } from "react-router-dom";
 import { ButtonBack}  from "../components/Buttons/ButtonBack"
 import useProtectedPage from "../hooks/useProtectedPage"
 import { AreaCard } from './style';
-import { BASE_URL, headers } from '../constants/url';
-import axios from "axios"
-
 import { ButtonArea } from "./style"
 import CandidateCard from '../components/Cards/candidateCard';
 import ApprovedCard from '../components/Cards/approvedCard';
