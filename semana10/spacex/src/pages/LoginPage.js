@@ -4,35 +4,37 @@ import useForm from '../hooks/useForm'
 import { useHistory } from "react-router-dom"
 import { BASE_URL }  from "../constants/url"
 import { ButtonArea } from "./style"
-
 import { ButtonBack}  from "../components/Buttons/ButtonBack"
 import Button from "../components/Buttons/Button"
 
 
 function LoginPage() {
     const history = useHistory()
-    
-    const [login, setLogin] = useForm('')
-    const [senha,setSenha] = useForm('')
+
+    const { form, onChange } = useForm({email: "",password: ""})
     
     const getLogin = () => {
-        const body = {email:login,password:senha}
+        console.log(form)
         axios
-        .post(`${BASE_URL}/login`, body)
+        .post(`${BASE_URL}/login`, form)
         .then((res) => {
             localStorage.setItem("token", res.data.token);
             history.push("/admin");
         })
         .catch((err) => alert(err.response.data.message));
+        document.getElementById('form').reset()
     }
 
     return (
         <div>
             <h1>Login</h1>
-            <input  required placeholder = "E-mail" type = "email" onChange = {setLogin}/>
-            <input  required placeholder = "Senha" type = "password" onChange = {setSenha}/>
+            <form id = "form" onSubmit = {getLogin}>
+                <input name = "email" required placeholder = "E-mail" type = "email" onChange = {onChange}/>
+                <input name = "password" required placeholder = "Senha" type = "password" onChange = {onChange}/>
+            </form>
+
             <ButtonArea>
-                <Button text = "Login" action = {getLogin}/>
+                <Button typeButton = "submit" text = "Login" action = {getLogin}/>
                 <ButtonBack
                     h = {history}
                 /> 

@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { Card } from "./styled"
 import Button from '../Buttons/Button';
 
@@ -12,11 +11,13 @@ return (
             <p>{props.place}</p>
             <p>{props.ocupation}</p>
             <p>{props.date}</p>
+            {!props.noButtom && (
             <Button
             text = {props.textButton}
             customStyle = {props.buttonStyle}
             action = {props.actionButton}
             />
+            ) }
         </Card>
 )
 }

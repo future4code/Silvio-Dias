@@ -4,8 +4,6 @@ import { useHistory } from "react-router-dom";
 import { goTo } from '../routes/Cordinator';
 import { ButtonArea,HomeArea } from './style'
 
-
-
 function HomePage() {
     const history = useHistory()
 

@@ -9,7 +9,6 @@ import { checkDate } from "../../scripts/checkDate"
 
 export function Form(props) {
     const { form, onChange } = useForm({id: props.id})
-    console.log(form.age)
 
     const cadastrar = (event) => {
         event.preventDefault();

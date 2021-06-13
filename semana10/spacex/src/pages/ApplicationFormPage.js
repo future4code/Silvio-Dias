@@ -9,7 +9,6 @@ function ApplicationFormPage() {
     const history = useHistory()
     const params = useParams()
 
-
     return (
         <div>
             <Form
