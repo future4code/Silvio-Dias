@@ -6,7 +6,6 @@ import { ButtonArea } from "./style"
 import AdminCard from '../components/Cards/adminCard';
 import useGoTo from '../hooks/useGoTo';
 
-
 function AdminHomePage() {
     const {history,goToPage} = useGoTo()
 
@@ -21,7 +20,7 @@ function AdminHomePage() {
         <div>
             <ButtonArea directionFlex={true}>
                 <Button text = "Logout" action = {Logout}/>
-                <Button action = {() => goToPage("cadastro-viagem")} text = "Cadastrar Viagem"/>
+                <Button action = {() => goToPage("/cadastro-viagem")} text = "Cadastrar Viagem"/>
 
                 <ButtonBack
                 h = {history}

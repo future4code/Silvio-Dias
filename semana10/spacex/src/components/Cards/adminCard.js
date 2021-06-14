@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect,useState } from 'react'
 import Cards from '../Cards/Cards'
 import useTrips from '../../hooks/useTrips';
 import useDelete from '../../hooks/useDelete';
@@ -7,12 +7,16 @@ import { loadingPage } from '../../scripts/loading';
 
 
 function AdminCard() {
+    const [deleted,setDeleted] = useState(false)
     const deleteTrip = useDelete() 
     const {goToPage} = useGoTo()
+    
+    const resetPage = () => {
+        setDeleted(!deleted)
+    }
 
     const Trips = useTrips("/trips"
     ,"",[{}])
-
 
     const listTrips = Trips.map((trip) => {
         return(

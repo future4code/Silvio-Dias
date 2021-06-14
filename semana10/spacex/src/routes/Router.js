@@ -26,7 +26,7 @@ function Router() {
                 <AdminHomePage/>
             </Route>
 
-            <Route exact path = "/admin/cadastro-viagem/">
+            <Route exact path = "/cadastro-viagem/">
                 <CreateTripPage/>
             </Route>
 

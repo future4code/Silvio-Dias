@@ -6,9 +6,11 @@ import { BASE_URL,headers } from '../../constants/url'
 import axios from "axios"
 import { AreaForm } from "./styled"
 import { checkDate } from "../../scripts/checkDate"
+import useGoTo from '../../hooks/useGoTo'
 
 export function Form(props) {
     const { form, onChange } = useForm({id: props.id})
+    const {goToPage} = useGoTo()
 
     const cadastrar = (event) => {
         event.preventDefault();
@@ -18,13 +20,15 @@ export function Form(props) {
             .then((response) => {
                 if(props.admin){
                     alert("Viagem cadastrada")
+                    goToPage("/admin")
                 }else{
                     alert("Recebemos a sua candidatura")
+                    goToPage("/viagens")
                 }
                 document.getElementById('form').reset()
             })
             .catch((err) => {
-                console.log(err)
+                alert(err)
                 
             })
         }else{

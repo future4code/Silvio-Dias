@@ -11,10 +11,13 @@ import Button from "../components/Buttons/Button"
 function LoginPage() {
     const history = useHistory()
 
+    if(localStorage.getItem("token")){
+        history.push("/");
+    }
+
     const { form, onChange } = useForm({email: "",password: ""})
     
     const getLogin = () => {
-        console.log(form)
         axios
         .post(`${BASE_URL}/login`, form)
         .then((res) => {

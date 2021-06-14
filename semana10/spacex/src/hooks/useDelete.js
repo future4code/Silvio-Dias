@@ -1,10 +1,7 @@
 import { BASE_URL, headers } from "../constants/url"
 import axios from "axios"
-import { useHistory } from "react-router-dom";
 
-const useDelete = () => {
-
-    const history = useHistory()
+function useDelete(){
     
     const deleteTrip = (id) => {
         const checkDelete = window.confirm("Tem certeza que quer deletar?")
@@ -12,12 +9,12 @@ const useDelete = () => {
             axios
         .delete(`${BASE_URL}/trips/${id}`,headers)
         .then((response) => {
+            window.location.reload();
         })
         .catch((err) => {
-            console.log(err)
+            alert(err)
         })
         }
-        
     }
 
     const clicktoDelete = (id) => {

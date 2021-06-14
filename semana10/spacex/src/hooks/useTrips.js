@@ -19,7 +19,7 @@ import {BASE_URL,headers} from "../constants/url"
 
         })
         .catch((err) =>{
-          console.log(err.response)
+          alert(err)
         })
 
       }
@@ -27,7 +27,6 @@ import {BASE_URL,headers} from "../constants/url"
       useEffect(() => {
         getTrips()
       }, [])
-      console.log(trips)
       return trips
     }
     

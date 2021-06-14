@@ -8,7 +8,7 @@ function HomePage() {
 
     return (
         <HomeArea>
-            <h1>SpaceX</h1>
+            <h1>LabeX</h1>
             <ButtonArea directionFlex>
                 <Button  text = "Viagens" action = {() => goToPage("viagens")}/> 
                 <Button  text = "Admin" action = {() => goToPage(localStorage.getItem("token") ? "/admin":"/login")}/>    
