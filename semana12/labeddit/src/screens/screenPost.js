@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Feed() {
+function ScreenPost() {
     return (
         <div>
             
@@ -8,4 +8,4 @@ function Feed() {
     )
 }
 
-export default Feed
+export default ScreenPost
