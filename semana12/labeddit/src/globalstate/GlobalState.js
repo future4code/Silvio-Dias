@@ -4,8 +4,14 @@ import { GlobalStateContext } from './GlobalStateContext'
 import { BASE_URL } from '../constants/url'
 
 const GlobalState = (props) => {
+const teste = true
 
-return "oi"
+
+return (
+    <GlobalStateContext.Provider>
+        {props.children}
+    </GlobalStateContext.Provider>
+)
 }
 
 export default GlobalState
