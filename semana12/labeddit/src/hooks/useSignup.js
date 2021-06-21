@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import { BASE_URL } from '../constants/url'
 
-function useSignup() {
+const useSignup = () => {
     const [token,setToken] = useState("")
 
     const postSignup = (signup) => {
