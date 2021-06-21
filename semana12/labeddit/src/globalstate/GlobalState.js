@@ -1,10 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import axios from 'axios' 
 import { GlobalStateContext } from './GlobalStateContext'
 import { BASE_URL } from '../constants/url'
 
 const GlobalState = (props) => {
-const teste = true
 
 
 return (
