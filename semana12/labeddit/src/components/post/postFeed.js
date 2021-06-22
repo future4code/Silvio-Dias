@@ -16,10 +16,10 @@ function PostFeed(props) {
                 <h2>{post.title}</h2>
                 <p>{post.body}</p>
                 <Like
-                idPost = {post[0].id}
+                idPost = {post.id}
                 />
                 <Dislike
-                idPost = {post[0].id}
+                idPost = {post.id}
                 />
                 <button>Comentários {post.commentCount}</button>
                 <button onClick = {() => goTo(history,`/post/${post.id}`)} >Ver mais</button>
