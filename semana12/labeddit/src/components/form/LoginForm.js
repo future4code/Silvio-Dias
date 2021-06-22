@@ -1,19 +1,17 @@
 import React from 'react'
 import useForm from '../../hooks/useForm'
-import useLogin from '../../hooks/useLogin'
 
-function LoginForm() {
+
+function LoginForm(props) {
     const {form, onChange} = useForm([])
-
-    const login = useLogin()
 
     return (
         <div>
-            <form action = {() => login(form)}>
-                <input name = "email" onChange = {onChange} type = "email" placeholder = "E-mail"/>
-                <input name = "password" onChange = {onChange} type = "password" placeholder = "Password"/>
-                <button type = "submit">Login</button>
+            <form>
+                <input name = "email" onChange = { onChange } type = "email" placeholder = "E-mail"/>
+                <input name = "password" onChange = { onChange } type = "password" placeholder = "Password"/>
             </form>
+            <button onClick = {() => props.login(form)} type = "submit">Login</button>
         </div>
     )
 }

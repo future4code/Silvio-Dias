@@ -1,15 +1,28 @@
 import React from 'react'
 import LoginForm from '../components/form/LoginForm'
-import useForm from '../hooks/useForm'
+import axios from "axios"
+import { BASE_URL } from '../constants/url'
 
-function ScreenLogin() {
-    const {form} = useForm()
+function ScreenLogin(props) {
 
-    console.log(form)
+    const getLogin  = (form) => {
+        console.log(form)
+        axios
+        .post(`${BASE_URL}/users/login`,form)
+        .then((response) => {
+            localStorage.setItem("token", response.data.token);
+        })
+        .catch((err) => {
+            alert(err.message)
+        })
+    }
+
     return (
         <div>
             <h1>LOGIN</h1>
-            <LoginForm/>
+            <LoginForm
+            login = {getLogin}
+            />
         </div>
     )
 }
