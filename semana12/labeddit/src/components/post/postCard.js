@@ -15,12 +15,18 @@ function PostCard() {
             <CardPost>
                 <h1>{post[0].title}</h1>    
                 <p>{post[0].body}</p>
+                <p>{post[0].commentCount}</p>
+
                 <Like
                 idPost = {post[0].id}
+                voted = {post[0].userVote}
                 />
+
                 <Dislike
                 idPost = {post[0].id}
+                voted = {post[0].userVote}
                 />
+
                 <button>Comentar</button>
             </CardPost>
         )

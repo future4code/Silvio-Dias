@@ -1,17 +1,49 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import axios from 'axios' 
 import { GlobalStateContext } from './GlobalStateContext'
-import { BASE_URL } from '../constants/url'
-import usePost from '../hooks/usePost'
+import { BASE_URL,headers } from '../constants/url'
+
 
 const GlobalState = (props) => {
 
-const posts = usePost()
+const [voted,setVoted] = useState(false)
+const [posts,setPosts] = useState()
 
-console.log(posts)
+const getPost = () => {
+    axios
+    .get(`${BASE_URL}/posts`,headers)
+    .then((response) => {
+        setPosts(response.data)
+        console.log(response.data)
+    })
+    .catch((err) => {
+        alert(err.message)
+    })
+}
+
+
+const DeleteVote = (id)  => {
+    alert('deletando')
+    axios
+    .delete(`${BASE_URL}/posts/${id}/votes`,headers)
+    .then((response) => {
+        setVoted(!voted)
+    })
+    .catch((err) => {
+        alert(err.message)
+    })
+}
+
+
+useEffect(() => {
+    alert('foi')
+    setVoted(false)
+    getPost()
+}, [voted])
+
 
 return (
-    <GlobalStateContext.Provider value = {{posts}}>
+    <GlobalStateContext.Provider value = {{posts,DeleteVote,setVoted}}>
         {props.children}
     </GlobalStateContext.Provider>
 )

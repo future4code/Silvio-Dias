@@ -15,12 +15,18 @@ function PostFeed(props) {
             <CardPost>
                 <h2>{post.title}</h2>
                 <p>{post.body}</p>
+                <p>{post.voteSum}</p>
+
                 <Like
                 idPost = {post.id}
+                voted = {post.userVote}
                 />
+
                 <Dislike
                 idPost = {post.id}
+                voted = {post.userVote}
                 />
+
                 <button>Comentários {post.commentCount}</button>
                 <button onClick = {() => goTo(history,`/post/${post.id}`)} >Ver mais</button>
             </CardPost>
