@@ -13,7 +13,7 @@ function ScreenRegister() {
             console.log(response)
         })
         .catch((err) => {
-            alert(err.message)
+            console.log(err)
         })
     }
     return (

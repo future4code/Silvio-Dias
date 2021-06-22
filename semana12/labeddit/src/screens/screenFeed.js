@@ -1,9 +1,12 @@
 import React from 'react'
+import PostFeed from '../components/post/postFeed'
 
-function ScreenFeed() {
+
+function ScreenFeed(props) {
+
     return (
         <div>
-            <h1>FEED</h1>
+            <PostFeed/>
         </div>
     )
 }
