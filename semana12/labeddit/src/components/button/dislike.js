@@ -17,7 +17,7 @@ function Dislike(props) {
             path = "comments"
         }
 
-        if(props.voted > 0){
+        if(props.voted < 0){
             DeleteVote(id,path)
         }else{
             const body = {direction: -1}

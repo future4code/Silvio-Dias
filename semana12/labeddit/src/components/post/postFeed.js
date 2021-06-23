@@ -3,6 +3,7 @@ import Card from "../card/Card"
 import {GlobalStateContext} from "../../globalstate/GlobalStateContext"
 import { goTo } from '../../router/Coordinator'
 import { useHistory } from 'react-router-dom'
+import Buttons from '../button/buttons'
 
 function PostFeed(props) {
     const {posts} = useContext(GlobalStateContext)
@@ -10,17 +11,26 @@ function PostFeed(props) {
 
     const postList = posts && posts.map((post) => {
         return(
+            <div>
+
+            
             <div onClick = {() => goTo(history,`/post/${post.id}`)}>
 
             <Card
             post = {post}
             />
             </div>
+            <Buttons
+            id = {post.id}
+            isPost = {true}
+            voted = {post.userVote}
+            />
+            </div>
             )
+            
     })
     return (
         <div>
-            <h1>FEED</h1>
             {postList}
         </div>
     )

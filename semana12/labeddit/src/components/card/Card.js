@@ -1,5 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
+import Buttons from '../button/buttons'
 import { CardPost } from './style'
 
 function Card({ post },props) {
@@ -23,9 +24,9 @@ function Card({ post },props) {
 
             <div>
                 {commentCount && (<p>Comentários: {commentCount}</p>)}
-                {userVote && (<p>Avalialão: {voteSum}</p>)} 
+                {voteSum && (<p>Avalialão: {voteSum}</p>)} 
             </div>
-       
+
         </CardPost>
     )
 }
