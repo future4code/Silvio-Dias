@@ -20,7 +20,6 @@ const getPost = () => {
         .get(`${BASE_URL}/posts`,headers)
         .then((response) => {
             setPosts(response.data)
-            console.log(response.data)
         })
         .catch((err) => {
             alert(err.message)
@@ -35,7 +34,6 @@ const getComments = () => {
         .get(`${BASE_URL}/posts/${idPost}/comments`,headers)
         .then((response) => {
             setComments(response.data)
-            console.log(response.data)
         })
         .catch((err) => {
             alert(err.message)

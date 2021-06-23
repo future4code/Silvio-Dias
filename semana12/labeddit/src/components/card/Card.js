@@ -9,7 +9,6 @@ function Card({ post },props) {
             username} = post
 
     const history = useHistory()
-        console.log(props.singlePost)
     return (
         <CardPost key = {id}>
             <div>

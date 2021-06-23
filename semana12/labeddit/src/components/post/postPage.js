@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import Card from '../card/Card';
 import SocialButtons from '../button/socialButtons';
 import Buttons from '../button/buttons';
+import Pagination from '../../hooks/pageNumbers';
 
 function PostPage() {
     const params = useParams()
@@ -11,7 +12,7 @@ function PostPage() {
 
     const post = posts && posts.filter(post => post.id === params.id)
 
-    if(post.length){
+    if(post.length > 0){
         setIdPost(post[0].id)
         return(
             <div>
@@ -24,9 +25,12 @@ function PostPage() {
                 voted = {post[0].userVote}
             />
             <SocialButtons/>
+            <Pagination/>
             </div>
 
         )
+    }else{
+        return "Carregando..."
     }
 }
 
