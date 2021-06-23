@@ -29,8 +29,6 @@ function PostCard() {
                 voted = {post[0].userVote}
                 post = {true}
                 />
-
-                <button>Comentar</button>
             </CardPost>
         )
     }

@@ -4,11 +4,13 @@ import Feed from "../pages/Feed"
 import Login from "../pages/Login"
 import Register from "../pages/Register"
 import Post from "../pages/Post"
+import Header from "../components/header/Header"
 
 const Router = () => {
     return(
 
         <BrowserRouter>
+                <Header/>
             <Switch>
 
                 <Route exact path="/" >
