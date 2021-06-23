@@ -7,10 +7,11 @@ import Dislike from "../button/dislike"
 
 function PostCard() {
     const params = useParams()
-    const {posts} = useContext(GlobalStateContext)
+    const {posts,setIdPost} = useContext(GlobalStateContext)
     const post = posts && posts.filter(post => post.id === params.id)
 
-    if(post){
+    if(post.length){
+        setIdPost(post[0].id)
         return(
             <CardPost>
                 <h1>{post[0].title}</h1>    

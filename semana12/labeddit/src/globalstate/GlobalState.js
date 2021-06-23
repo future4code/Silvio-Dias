@@ -7,7 +7,8 @@ import { BASE_URL,headers } from '../constants/url'
 const GlobalState = (props) => {
 
 const [voted,setVoted] = useState(false)
-const [posts,setPosts] = useState()
+const [posts,setPosts] = useState([{}])
+const [idPost,setIdPost] = useState([{}])
 
 const getPost = () => {
     axios
@@ -36,14 +37,13 @@ const DeleteVote = (id)  => {
 
 
 useEffect(() => {
-    alert('foi')
     setVoted(false)
     getPost()
 }, [voted])
 
 
 return (
-    <GlobalStateContext.Provider value = {{posts,DeleteVote,setVoted}}>
+    <GlobalStateContext.Provider value = {{posts,idPost,setIdPost,DeleteVote,setVoted}}>
         {props.children}
     </GlobalStateContext.Provider>
 )
