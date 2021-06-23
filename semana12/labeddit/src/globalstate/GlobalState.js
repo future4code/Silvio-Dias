@@ -43,7 +43,7 @@ useEffect(() => {
 
 
 return (
-    <GlobalStateContext.Provider value = {{posts,idPost,setIdPost,DeleteVote,setVoted}}>
+    <GlobalStateContext.Provider value = {{posts,idPost,setIdPost,DeleteVote,setVoted,getPost}}>
         {props.children}
     </GlobalStateContext.Provider>
 )
