@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, {useContext} from 'react'
 import PostForm from '../components/form/PostForm'
+import SearchForm from '../components/form/searchForm'
 import PostFeed from '../components/post/postFeed'
 import { BASE_URL, headers } from '../constants/url'
 import {GlobalStateContext} from "../globalstate/GlobalStateContext"
@@ -22,10 +23,13 @@ function ScreenFeed(props) {
 
     return (
         <div>
+            <SearchForm/>
+            
             <PostForm
                 post = {sendPost}
             
             />
+
             <PostFeed/>
         </div>
     )

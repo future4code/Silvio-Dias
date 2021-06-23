@@ -4,6 +4,7 @@ import {GlobalStateContext} from "../../globalstate/GlobalStateContext"
 import { goTo } from '../../router/Coordinator'
 import { useHistory } from 'react-router-dom'
 import Buttons from '../button/buttons'
+import Pagination from '../pagination/Pagination';
 
 function PostFeed(props) {
     const {posts} = useContext(GlobalStateContext)
@@ -32,6 +33,7 @@ function PostFeed(props) {
     return (
         <div>
             {postList}
+            <Pagination/>
         </div>
     )
 }

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import Card from '../card/Card';
 import SocialButtons from '../button/socialButtons';
 import Buttons from '../button/buttons';
-import Pagination from '../../hooks/pageNumbers';
+
 
 function PostPage() {
     const params = useParams()
@@ -25,7 +25,7 @@ function PostPage() {
                 voted = {post[0].userVote}
             />
             <SocialButtons/>
-            <Pagination/>
+    
             </div>
 
         )

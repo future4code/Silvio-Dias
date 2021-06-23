@@ -6,6 +6,7 @@ import { BASE_URL,headers } from '../constants/url'
 
 const GlobalState = (props) => {
 
+const [page,setPage] = useState(0)
 const [comments,setComments] = useState([{}])
 const [voted,setVoted] = useState(false)
 const [posts,setPosts] = useState([{}])
@@ -17,7 +18,7 @@ const getPost = () => {
     if(token){
         
         axios
-        .get(`${BASE_URL}/posts`,headers)
+        .get(`${BASE_URL}/posts?page=${page}`,headers)
         .then((response) => {
             setPosts(response.data)
         })
@@ -58,11 +59,11 @@ const DeleteVote = (id,path)  => {
 useEffect(() => {
     setVoted(false)
     getPost()
-}, [voted])
+}, [voted,page])
 
 
 return (
-    <GlobalStateContext.Provider value = {{posts,idPost,comments,setIdPost,DeleteVote,setVoted,getPost,getComments}}>
+    <GlobalStateContext.Provider value = {{posts,idPost,comments,setIdPost,DeleteVote,setVoted,getPost,getComments,setPage}}>
         {props.children}
     </GlobalStateContext.Provider>
 )
