@@ -8,8 +8,17 @@ function Dislike(props) {
 
     const getDislike = (id) => {
         
-        if(props.voted < 0 ){
-            DeleteVote(id)
+        const body = {direction: 1}
+        let path = ""
+
+        if(props.post){
+            path = "posts"
+        }else{
+            path = "comments"
+        }
+
+        if(props.voted > 0){
+            DeleteVote(id,path)
         }else{
             const body = {direction: -1}
 

@@ -7,17 +7,19 @@ function Like(props) {
     const {DeleteVote,setVoted} = useContext(GlobalStateContext)
 
     const getLike = (id) => {
-        if(props.voted > 0){
-            DeleteVote(id)
-        }else{
-            const body = {direction: 1}
-            let path = ""
 
-            if(props.post){
-                path = "posts"
-            }else{
-                path = "comments"
-            }
+        const body = {direction: 1}
+        let path = ""
+
+        if(props.post){
+            path = "posts"
+        }else{
+            path = "comments"
+        }
+
+        if(props.voted > 0){
+            DeleteVote(id,path)
+        }else{
 
             axios
             .post(`${BASE_URL}/${path}/${id}/votes`,body,headers)

@@ -23,10 +23,10 @@ const getPost = () => {
 }
 
 
-const DeleteVote = (id)  => {
+const DeleteVote = (id,path)  => {
     alert('deletando')
     axios
-    .delete(`${BASE_URL}/posts/${id}/votes`,headers)
+    .delete(`${BASE_URL}/${path}/${id}/votes`,headers)
     .then((response) => {
         setVoted(!voted)
     })

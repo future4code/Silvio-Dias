@@ -39,7 +39,7 @@ function PostComment() {
                 voted = {comment.userVote}
                 post = {false}
                 />
-
+                <h3>{comment.voteSum}</h3>
                 <Dislike
                 idPost = {comment.id}
                 voted = {comment.userVote}
