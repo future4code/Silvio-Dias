@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { CardPost } from './style'
 import {GlobalStateContext} from "../../globalstate/GlobalStateContext"
 import Like from "../button/like"
 import Dislike from "../button/dislike"
@@ -13,7 +12,7 @@ function PostComment() {
 
     const commentsList = comments.length > 0 && comments.map((comment) => {
         return(
-            <CardPost>
+            <div>
                 <p>{comment.body}</p>
                 <p>{comment.username}</p>
                 <Like
@@ -27,7 +26,7 @@ function PostComment() {
                 voted = {comment.userVote}
                 post = {false}
                 />
-            </CardPost>
+            </div>
         )
     })
 

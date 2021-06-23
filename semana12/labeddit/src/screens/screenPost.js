@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useContext } from 'react'
 import CommentForm from '../components/form/CommentForm'
-import PostCard from '../components/post/postCard'
+import PostPage from '../components/post/postPage'
 import PostComment from '../components/post/postComment'
 import { BASE_URL,headers } from '../constants/url'
 import {GlobalStateContext} from "../globalstate/GlobalStateContext"
@@ -23,7 +23,7 @@ function ScreenPost() {
 
     return (
         <div>
-            <PostCard/>
+            <PostPage/>
             <CommentForm
             comentar = {sendComment}
             />

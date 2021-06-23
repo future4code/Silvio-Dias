@@ -6,10 +6,11 @@ import Logout from '../button/logout';
 
 function Header() {
     const history = useHistory();
+    const token = localStorage.getItem("token");
     return (
         <div>
             <h1 onClick = {() => goTo(history,"/")}>Labeditt</h1>
-            <Logout/>
+            {token && <Logout/>}
         </div>
     )
 }

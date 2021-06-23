@@ -1,39 +1,22 @@
 import React,{ useContext } from 'react'
-import { CardPost } from "./style"
+import Card from "../card/Card"
 import {GlobalStateContext} from "../../globalstate/GlobalStateContext"
-import { useHistory } from "react-router-dom";
-import {goTo} from "../../router/Coordinator"
-import Like from "../button/like"
-import Dislike from "../button/dislike"
+import { goTo } from '../../router/Coordinator'
+import { useHistory } from 'react-router-dom'
 
 function PostFeed(props) {
-    const history = useHistory();
     const {posts} = useContext(GlobalStateContext)
-    console.log(posts)
+    const history = useHistory()
+
     const postList = posts && posts.map((post) => {
         return(
-            <CardPost>
-                <h2>{post.title}</h2>
-                <h5>{post.username}</h5>
-                <p>{post.body}</p>
-                <p>{post.voteSum}</p>
+            <div onClick = {() => goTo(history,`/post/${post.id}`)}>
 
-                <Like
-                idPost = {post.id}
-                voted = {post.userVote}
-                post = {true}
-                />
-
-                <Dislike
-                idPost = {post.id}
-                voted = {post.userVote}
-                post = {true}
-                />
-
-                <h5>Comentários: {post.commentCount}</h5>
-                <button onClick = {() => goTo(history,`/post/${post.id}`)} >Ver mais</button>
-            </CardPost>
-        )
+            <Card
+            post = {post}
+            />
+            </div>
+            )
     })
     return (
         <div>
