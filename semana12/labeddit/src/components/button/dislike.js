@@ -12,8 +12,18 @@ function Dislike(props) {
             DeleteVote(id)
         }else{
             const body = {direction: -1}
+
+            let path = ""
+
+            if(props.post){
+                path = "posts"
+            }else{
+                path = "comments"
+            }
+
+
             axios
-            .put(`${BASE_URL}/posts/${id}/votes`,body,headers)
+            .put(`${BASE_URL}/${path}/${id}/votes`,body,headers)
             .then((response) => {
                 setVoted(true)
             })

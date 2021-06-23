@@ -9,7 +9,7 @@ import Dislike from "../button/dislike"
 function PostFeed(props) {
     const history = useHistory();
     const {posts} = useContext(GlobalStateContext)
-    
+    console.log(posts)
     const postList = posts && posts.map((post) => {
         return(
             <CardPost>
@@ -20,11 +20,13 @@ function PostFeed(props) {
                 <Like
                 idPost = {post.id}
                 voted = {post.userVote}
+                post = {true}
                 />
 
                 <Dislike
                 idPost = {post.id}
                 voted = {post.userVote}
+                post = {true}
                 />
 
                 <button>Comentários {post.commentCount}</button>

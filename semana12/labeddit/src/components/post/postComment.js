@@ -3,6 +3,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { BASE_URL,headers } from '../../constants/url'
 import { CardPost } from './style'
 import {GlobalStateContext} from "../../globalstate/GlobalStateContext"
+import Like from "../button/like"
+import Dislike from "../button/dislike"
 
 function PostComment() {
     const [comments,setComments] = useState([{}])
@@ -14,6 +16,7 @@ function PostComment() {
             .get(`${BASE_URL}/posts/${idPost}/comments`,headers)
             .then((response) => {
                 setComments(response.data)
+                console.log(response.data)
             })
             .catch((err) => {
                 alert(err.message)
@@ -25,25 +28,31 @@ function PostComment() {
         getComments()
     }, [idPost])
 
-    const commentsList = comments.length > 1 && comments.map((comment) => {
+
+    const commentsList = comments.length > 0 && comments.map((comment) => {
         return(
             <CardPost>
                 <p>{comment.body}</p>
+
+                <Like
+                idPost = {comment.id}
+                voted = {comment.userVote}
+                post = {false}
+                />
+
+                <Dislike
+                idPost = {comment.id}
+                voted = {comment.userVote}
+                post = {false}
+                />
             </CardPost>
         )
     })
 
-    // if(comments.length){
-    //     return(
-    //         {commentsList}
-    //     )
-    // }
-
     return (
         
         <div>
-        Carregando
-        {commentsList && commentsList}
+        {commentsList}
         </div>
     )
 }

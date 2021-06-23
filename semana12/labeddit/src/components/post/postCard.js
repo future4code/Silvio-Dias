@@ -21,11 +21,13 @@ function PostCard() {
                 <Like
                 idPost = {post[0].id}
                 voted = {post[0].userVote}
+                post = {true}
                 />
 
                 <Dislike
                 idPost = {post[0].id}
                 voted = {post[0].userVote}
+                post = {true}
                 />
 
                 <button>Comentar</button>
