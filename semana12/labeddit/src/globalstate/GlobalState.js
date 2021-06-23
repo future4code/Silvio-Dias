@@ -10,17 +10,23 @@ const [comments,setComments] = useState([{}])
 const [voted,setVoted] = useState(false)
 const [posts,setPosts] = useState([{}])
 const [idPost,setIdPost] = useState([{}])
+const token = localStorage.getItem("token");
+
 
 const getPost = () => {
-    axios
-    .get(`${BASE_URL}/posts`,headers)
-    .then((response) => {
-        setPosts(response.data)
-        console.log(response.data)
-    })
-    .catch((err) => {
-        alert(err.message)
-    })
+    if(token){
+        
+        axios
+        .get(`${BASE_URL}/posts`,headers)
+        .then((response) => {
+            setPosts(response.data)
+            console.log(response.data)
+        })
+        .catch((err) => {
+            alert(err.message)
+        })
+    
+    }
 }
 
 const getComments = () => {

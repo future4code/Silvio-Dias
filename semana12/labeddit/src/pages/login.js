@@ -1,6 +1,16 @@
 import React from 'react'
 import ScreenLogin from "../screens/screenLogin"
-function login() {
+import { useHistory } from "react-router-dom";
+
+function Login() {
+
+    const history = useHistory()
+
+    const token = localStorage.getItem("token");
+    if (token) {
+      history.push("/");
+    }
+
     return (
         <div>
             <ScreenLogin/>
@@ -8,4 +18,4 @@ function login() {
     )
 }
 
-export default login
+export default Login
