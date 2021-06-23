@@ -6,9 +6,6 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -19,7 +16,7 @@ code {
 }
 
 h1,h2,h3 {
-  font-family: 'Audiowide', cursive;
+  font-family: 'Press Start 2P', cursive
 }
 
 h4,h5,h6,p{

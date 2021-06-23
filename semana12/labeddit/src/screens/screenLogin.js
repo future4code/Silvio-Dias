@@ -17,6 +17,7 @@ function ScreenLogin(props) {
         .post(`${BASE_URL}/users/login`,form)
         .then((response) => {
             localStorage.setItem("token", response.data.token);
+            history.push('/')
         })
         .catch((err) => {
             alert(err.message)
