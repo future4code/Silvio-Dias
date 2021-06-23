@@ -14,6 +14,7 @@ function PostFeed(props) {
         return(
             <CardPost>
                 <h2>{post.title}</h2>
+                <h5>{post.username}</h5>
                 <p>{post.body}</p>
                 <p>{post.voteSum}</p>
 
@@ -29,7 +30,7 @@ function PostFeed(props) {
                 post = {true}
                 />
 
-                <button>Comentários {post.commentCount}</button>
+                <h5>Comentários: {post.commentCount}</h5>
                 <button onClick = {() => goTo(history,`/post/${post.id}`)} >Ver mais</button>
             </CardPost>
         )

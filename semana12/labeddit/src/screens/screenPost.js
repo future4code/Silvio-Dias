@@ -7,14 +7,14 @@ import { BASE_URL,headers } from '../constants/url'
 import {GlobalStateContext} from "../globalstate/GlobalStateContext"
 
 function ScreenPost() {
-    const {idPost} = useContext(GlobalStateContext)
+    const {idPost,getComments} = useContext(GlobalStateContext)
   
 
     const sendComment = (body) => {
         axios
         .post(`${BASE_URL}/posts/${idPost}/comments`,body,headers)
         .then((response) => {
-
+            getComments()
         })
         .catch((err) => {
 
