@@ -3,6 +3,7 @@ import PageNumber from '../../hooks/pageNumbers'
 import {GlobalStateContext} from "../../globalstate/GlobalStateContext"
 import axios from 'axios'
 import { BASE_URL, headers } from '../../constants/url'
+import SearchCard from '../card/searchCard'
 
 function SearchForm() {
     const [posts,setPosts] = useState([{}])
@@ -29,10 +30,25 @@ function SearchForm() {
         setSearched(postSearched)
 
     }
+
+    const listSearched = searched.length && searched.map((post) => {
+        return(
+            <SearchCard
+            post = {post}
+            />
+
+            // <div>
+            //     <h3>{post.title}</h3>
+            //     <p>{post.body}</p>
+            //     <p>{post.username}</p>
+            // </div>
+        )
+    })
     
     return (
         <div>
             <input onChange = {searchPost} onBlur = {() => setPosts([{}])} onClick = {getAll} placeholder = "Pesquisar" />
+            {listSearched.length && listSearched}
         </div>
     )
 }

@@ -1,6 +1,5 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import Buttons from '../button/buttons'
 import { CardPost } from './style'
 
 function Card({ post },props) {
