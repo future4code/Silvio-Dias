@@ -23,7 +23,7 @@ const getPost = () => {
             setPosts(response.data)
         })
         .catch((err) => {
-            alert(err.message)
+            alert(err.response.data)
         })
     
     }

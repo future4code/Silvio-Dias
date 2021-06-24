@@ -1,6 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { CardPost } from './style'
+import { CardPost,CardTitulo } from './style'
+import "./style.scss"
 
 function Card({ post },props) {
     const {id,title,body,
@@ -11,7 +12,7 @@ function Card({ post },props) {
     return (
         <CardPost key = {id}>
             <div>
-                <h2>{title}</h2>
+                <CardTitulo class="vhs" data-text= {title} >{title}</CardTitulo>
             </div>
             <div>
                 <p>{body}</p>
