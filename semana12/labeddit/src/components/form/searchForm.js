@@ -1,10 +1,12 @@
-import React, {useContext} from 'react'
+import React, {useContext, useState} from 'react'
 import PageNumber from '../../hooks/pageNumbers'
 import {GlobalStateContext} from "../../globalstate/GlobalStateContext"
 import axios from 'axios'
 import { BASE_URL, headers } from '../../constants/url'
 
 function SearchForm() {
+    const [posts,setPosts] = useState([{}])
+    const [searched,setSearched] = useState([{}])
     const {setPage} = useContext(GlobalStateContext)
     const numbers = PageNumber()
 
@@ -13,7 +15,7 @@ function SearchForm() {
             axios.
             get(`${BASE_URL}/posts?size=${numbers *10}`,headers)
             .then((response) => {
-                console.log(response.data)
+                setPosts(response.data)
             })
             .catch((err) => {
                 alert(err)
@@ -21,9 +23,16 @@ function SearchForm() {
         }
     }
     
+    const searchPost = (event) => {
+        const search = event.target.value
+        const postSearched = posts.filter(el => el.title === search || el.username === search || el.body === search)
+        setSearched(postSearched)
+
+    }
+    
     return (
         <div>
-            <input onFocus = {getAll} placeholder = "Pesquisar" />
+            <input onChange = {searchPost} onBlur = {() => setPosts([{}])} onClick = {getAll} placeholder = "Pesquisar" />
         </div>
     )
 }
