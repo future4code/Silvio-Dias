@@ -1,6 +1,7 @@
 import React from 'react'
 import useForm from '../../hooks/useForm'
 import {Input} from "./styled"
+import ButtonForm from '../button/button'
 
 function PostForm(props) {
     const {form, onChange} = useForm([])
@@ -10,7 +11,10 @@ function PostForm(props) {
                 <Input onChange = {onChange} name = "title" placeholder = "Titulo do Post" type = "text"/>
                 <Input onChange = {onChange} name = "body" placeholder = "Diga o que está pensando" type = "text"/>
             </form>
-            <button onClick = {() => props.post(form)}>Publicar Post</button>
+            <ButtonForm
+            button = {() => props.post(form)}
+            text = "Post"
+            />
             </div>
     )
 

@@ -1,4 +1,5 @@
 import React from 'react'
+import {Button} from "./style"
 
 function Logout() {
     const startLogout = () => {
@@ -8,7 +9,7 @@ function Logout() {
 
     return (
         <div>
-            <button onClick = {startLogout}>Logout</button>
+            <Button onClick = {startLogout}>Logout</Button>
         </div>
     )
 }

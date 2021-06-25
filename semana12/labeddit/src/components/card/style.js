@@ -23,11 +23,8 @@ export const CardPost = styled.div`
         :hover{
             animation: ${skew} 1s infinite;
         }
-        }
-
-    :hover{
-        cursor: pointer;
     }
+
 `
 
 export const Title = styled.div`

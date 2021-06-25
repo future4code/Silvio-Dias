@@ -1,6 +1,7 @@
 import React from 'react'
 import useForm from '../../hooks/useForm'
 import {Input} from "./styled"
+import ButtonForm from '../button/button'
 
 function RegisterForm(props) {
     const {form, onChange} = useForm([])
@@ -11,7 +12,10 @@ function RegisterForm(props) {
                 <Input name = "email" onChange =  {onChange} type = "email" placeholder = "E-mail"/>
                 <Input name = "password" onChange = {onChange} type = "password" placeholder = "Password"/>
             </form>
-            <button onClick = {() => props.register(form)} >Cadastrar</button>
+            <ButtonForm
+            button = {() => props.register(form)}
+            text = "Cadastrar"
+            />
         </div>
     )
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import useForm from '../../hooks/useForm'
+import ButtonForm from '../button/button'
 import {Input} from "./styled"
 
 function CommentForm(props) {
@@ -7,7 +8,10 @@ function CommentForm(props) {
     return (
         <div>
             <Input onChange = {onChange} type = "text" name = "body" placeholder = "Faça um comentário" />
-            <button onClick = {() => props.comentar(form)} >Comentar</button>
+            <ButtonForm
+            button = {() => props.comentar(form)}
+            text = "Comentar"
+            />
         </div>
     )
 }
