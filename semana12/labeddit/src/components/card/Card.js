@@ -14,7 +14,8 @@ function Card({ post }) {
     return (
         <CardPost key = {id}>
             <VoteArea>
-                <Buttons
+
+                <Buttons //Botões like deslike
                 id = {id}
                 isPost = {true}
                 vote = {voteSum}
