@@ -7,6 +7,7 @@ import {Input} from "./styled"
 
 function SearchForm() {
     const [posts,setPosts] = useState([{}])
+    const [word,setWord] = useState("")
     const [searched,setSearched] = useState([{}])
     const numbers = PageNumber()
 
@@ -14,25 +15,31 @@ function SearchForm() {
             axios
             .get(`${BASE_URL}/posts?size=${numbers *10}`,headers)
             .then((response) => {
+                console.log("dentro do axios")
                 setPosts(response.data)
-                console.log("foi")
+                if(posts.length > 1){
+                    console.log("post.length")
+                    searchPost()
+                }
+
             })
             .catch((err) => {
-                if(err.response.status === 401){
-
-                }
-                    alert(err.response.data)
+                    alert(err)
             })
         }
     
-    const searchPost = (event) => {
-        const search = event.target.value
-        const postSearched = posts.title && posts.filter(el => el.title.toLowerCase() === search.toLowerCase() ||
-                                                el.username.toLowerCase() === search.toLowerCase() ||
-                                                el.body.toLowerCase() === search.toLowerCase())
-                                                
+    const searchPost = () => {
+        console.log(posts)
+        const postSearched = posts.title && posts.filter(el => el.title.toLowerCase() === word.toLowerCase() ||
+                                                el.username.toLowerCase() === word.toLowerCase() ||
+                                                el.body.toLowerCase() === word.toLowerCase())
+
         setSearched(postSearched)
 
+    }
+
+    const getSearch = (event) => {
+        setWord(event.target.value)
     }
 
     const listSearched = searched.length && searched.map((post) => {
@@ -41,25 +48,18 @@ function SearchForm() {
             post = {post}
             />
         )
-    })
+    })    
 
     useEffect(() => {
-            getAll()
-    },[numbers])
-
-    if(posts.length > 1){
-        return(
-            <div>
-                <Input onChange = {searchPost} placeholder = "Pesquisar" />
-                <button>&#128269;</button>
-                {listSearched.length  && listSearched}
-            </div>
-
-        )
-    }
-    
+        if(posts.title){
+            searchPost()
+        }
+    }, [posts])
     return (
-        <p>Carregando...</p>
+        <div>
+            <Input onChange = {getSearch} placeholder = "Pesquisar" />
+            <button onClick = {getAll}>&#128269;</button>
+        </div>
     )
 }
 

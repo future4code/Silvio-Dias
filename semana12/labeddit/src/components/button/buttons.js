@@ -3,7 +3,9 @@ import Dislike from './dislike'
 import Like from './like'
 
 function Buttons(props) {
+    console.log(props.isPost)
     return (
+
         <div>
             <Like
             idPost = {props.id}

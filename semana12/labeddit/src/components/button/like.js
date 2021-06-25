@@ -26,7 +26,6 @@ function Like(props) {
             .post(`${BASE_URL}/${path}/${id}/votes`,body,headers)
             .then((response) => {
                 setVoted(true)
-                console.log(response)
             })
             .catch((err) => {
                 alert(err.message)

@@ -5,7 +5,7 @@ import Buttons from '../button/buttons';
 import { goTo } from '../../router/Coordinator';
 
 
-function Card({ post }) {
+function CommentCard({ post }) {
     const {id,title,body,
             commentCount,voteSum,userVote,
             username} = post
@@ -16,7 +16,7 @@ function Card({ post }) {
             <VoteArea>
                 <Buttons
                 id = {id}
-                isPost = {true}
+                isPost = {false}
                 vote = {voteSum}
                 voted = {userVote}
                 />
@@ -48,4 +48,4 @@ function Card({ post }) {
     )
 }
 
-export default Card
+export default CommentCard

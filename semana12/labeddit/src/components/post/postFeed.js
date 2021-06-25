@@ -15,6 +15,7 @@ function PostFeed(props) {
             <div>
                 <Card
                 post = {post}
+                typePost = {true}
                 />
             </div>
             )

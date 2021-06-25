@@ -33,3 +33,14 @@ export const FormLog = styled.form`
 
 
 `
+
+export const FormPost = styled.form`
+    display:flex;
+    flex-direction: column;
+    padding:1rem;
+
+    input{
+        margin: 1rem;
+        border-radius: 0;
+    }
+`

@@ -12,6 +12,7 @@ const [comments,setComments] = useState([{}])
 const [voted,setVoted] = useState(false)
 const [posts,setPosts] = useState([{}])
 const [idPost,setIdPost] = useState([{}])
+const [isPost,setIsPost] = useState("")
 const [token,setToken] = useState(localStorage.getItem("token"))
 const history = useHistory()
 
@@ -67,11 +68,12 @@ const DeleteVote = (id,path)  => {
 useEffect(() => {
     setVoted(false)
     getPost()
+    getComments()
 }, [voted,page,token])
 
 
 return (
-    <GlobalStateContext.Provider value = {{posts,idPost,comments,setIdPost,DeleteVote,setVoted,getPost,getComments,setPage}}>
+    <GlobalStateContext.Provider value = {{posts,isPost,idPost,comments,setIdPost,DeleteVote,setVoted,getPost,getComments,setPage,setIsPost}}>
         {props.children}
     </GlobalStateContext.Provider>
 )

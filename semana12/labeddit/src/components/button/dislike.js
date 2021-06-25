@@ -38,7 +38,7 @@ function Dislike(props) {
                 setVoted(true)
             })
             .catch((err) => {
-                alert(err.message)
+                alert(err.response.data)
             })
         }
 

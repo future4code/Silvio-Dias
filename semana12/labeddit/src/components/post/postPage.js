@@ -16,6 +16,7 @@ function PostPage() {
             <div>
                 <Card
                     post = {post[0]}
+                    typePost = {true}
                 />
                 <SocialButtons/>
             </div>
