@@ -1,9 +1,9 @@
 import styled from "styled-components"
-import { basic, white } from "../../constants/color"
+import { secondary, white } from "../../constants/color"
 
 export const ButtonVote = styled.div`
     background:none;
-    color: ${basic};
+    color: ${secondary};
     font-size: x-large;
 
 
@@ -19,15 +19,16 @@ export const SocialIcon = styled.img`
 
 export const Button = styled.button`
     background: none;
-    border: 2px solid ${white};
+    border: 2px solid ${secondary};
     border-radius: 10%;
-    color: ${white};
+    color: ${secondary};
     padding: 0.5rem;
     font-size: large;
     transition: 0.4s;
 
     :hover{
         cursor:pointer;
-        background-color: green;
+        background-color: ${secondary};
+        color: ${white}
     }
 `

@@ -13,23 +13,28 @@ const [voted,setVoted] = useState(false)
 const [posts,setPosts] = useState([{}])
 const [idPost,setIdPost] = useState([{}])
 const [isPost,setIsPost] = useState("")
-const [token,setToken] = useState(localStorage.getItem("token"))
+const [start,setStart] = useState(false)
 const history = useHistory()
 
 
+const headers = {headers: {Authorization:localStorage.getItem("token")}}
+
+
+
 const getPost = () => {
-    if(token){
-        
+    console.log(headers.headers.Authorization)
+    if(headers.headers.Authorization){
         axios
         .get(`${BASE_URL}/posts?page=${page}`,headers)
         .then((response) => {
             setPosts(response.data)
         })
         .catch((err) => {
-            if(err.response.status === 401 && token){
+            if(err.response.status === 401 && localStorage.getItem("token")){
                 localStorage.removeItem("token")
                 history.push("/login")
             }
+                console.log("getPost")
                 alert(err.response.data)
 
         })
@@ -63,16 +68,15 @@ const DeleteVote = (id,path)  => {
     })
 }
 
-
 useEffect(() => {
     setVoted(false)
     getPost()
     getComments()
-}, [voted,page,token])
+}, [voted,page,start])
 
 
 return (
-    <GlobalStateContext.Provider value = {{posts,isPost,idPost,comments,setIdPost,DeleteVote,setVoted,getPost,getComments,setPage,setIsPost}}>
+    <GlobalStateContext.Provider value = {{posts,isPost,idPost,headers,comments,setIdPost,DeleteVote,setVoted,getPost,getComments,setPage,setIsPost,setStart}}>
         {props.children}
     </GlobalStateContext.Provider>
 )

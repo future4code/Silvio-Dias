@@ -1,7 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
 import {GlobalStateContext} from "../../globalstate/GlobalStateContext"
-import Like from "../button/like"
-import Dislike from "../button/dislike"
 import CommentCard from '../card/commentCard'
 
 function PostComment() {

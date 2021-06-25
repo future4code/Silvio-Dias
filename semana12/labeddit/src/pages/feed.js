@@ -16,9 +16,14 @@ function Feed() {
     return (
         <div>
             <ScreenFeed/>
-            <PaginationArea>
-                <Pagination/>
-            </PaginationArea>
+            {localStorage.getItem("token") && (
+
+                <PaginationArea>
+                    <Pagination/>
+                </PaginationArea>
+
+            )}
+
 
         </div>
     )

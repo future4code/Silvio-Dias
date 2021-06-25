@@ -1,24 +1,27 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import LoginForm from '../components/form/LoginForm'
 import axios from "axios"
 import { BASE_URL } from '../constants/url'
 import { useHistory } from "react-router-dom";
 import {goTo} from "../router/Coordinator"
 import { Titulo,FormCard,Link } from './style'
+import { GlobalStateContext } from '../globalstate/GlobalStateContext';
 
 function ScreenLogin(props) {
 
     const history = useHistory()
-
+    const {setStart} = useContext(GlobalStateContext)
     const getLogin  = (form) => {
         axios
         .post(`${BASE_URL}/users/login`,form)
         .then((response) => {
             localStorage.setItem("token", response.data.token);
+            setStart(true)
             history.push('/')
+            
         })
         .catch((err) => {
-            alert(err.response.data)
+            console.log(err.response.data)
         })
     }
 

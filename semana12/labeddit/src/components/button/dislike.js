@@ -1,11 +1,11 @@
 import axios from 'axios'
 import React, { useContext } from 'react'
-import { BASE_URL, headers } from '../../constants/url'
+import { BASE_URL } from '../../constants/url'
 import {GlobalStateContext} from "../../globalstate/GlobalStateContext"
 import {ButtonVote} from "../button/style"
 
 function Dislike(props) {
-    const {DeleteVote,setVoted} = useContext(GlobalStateContext)
+    const {DeleteVote,setVoted,headers} = useContext(GlobalStateContext)
 
     const getDislike = (id) => {
         

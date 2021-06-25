@@ -5,4 +5,5 @@ export const PaginationArea = styled.div`
     justify-content: center;
     align-items: center;
     margin:1rem;
+    flex-wrap:wrap;
 `

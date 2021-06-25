@@ -1,13 +1,12 @@
 import axios from 'axios'
 import React, {useContext} from 'react'
 import PostForm from '../components/form/PostForm'
-import SearchForm from '../components/form/searchForm'
 import PostFeed from '../components/post/postFeed'
-import { BASE_URL, headers } from '../constants/url'
+import { BASE_URL } from '../constants/url'
 import {GlobalStateContext} from "../globalstate/GlobalStateContext"
 
 function ScreenFeed(props) {
-    const {getPost,posts} = useContext(GlobalStateContext)
+    const {getPost,headers} = useContext(GlobalStateContext)
 
     const sendPost = (body) => { //Envia novo post
         axios
