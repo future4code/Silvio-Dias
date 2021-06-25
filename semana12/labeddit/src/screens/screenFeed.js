@@ -27,7 +27,6 @@ function ScreenFeed(props) {
             
             <PostForm
                 post = {sendPost}
-            
             />
 
             <PostFeed/>
