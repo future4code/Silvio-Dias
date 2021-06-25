@@ -14,7 +14,6 @@ const PageNumber = () => {
             if(response.data.length){
                 paginationNumber++
                 checkPages()
-                console.log(paginationNumber)
                 setNumber(paginationNumber)
             }else{
                 setStop(true)

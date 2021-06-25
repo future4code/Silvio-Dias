@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, { useEffect, useState} from 'react'
 import PageNumber from '../../hooks/pageNumbers'
 import axios from 'axios'
 import { BASE_URL, headers } from '../../constants/url'
@@ -11,26 +11,25 @@ function SearchForm() {
     const numbers = PageNumber()
 
     const getAll = () => {
-        if(numbers){
-            axios.
-            get(`${BASE_URL}/posts?size=${numbers *10}`,headers)
+            axios
+            .get(`${BASE_URL}/posts?size=${numbers *10}`,headers)
             .then((response) => {
                 setPosts(response.data)
+                console.log("foi")
             })
             .catch((err) => {
                 alert(err)
             })
         }
-    }
     
     const searchPost = (event) => {
         const search = event.target.value
-        const postSearched = posts.filter(el => el.title === search || el.username === search || el.body === search)
+        const postSearched = posts.title && posts.filter(el => el.title.toLowerCase() === search.toLowerCase() ||
+                                                el.username.toLowerCase() === search.toLowerCase() ||
+                                                el.body.toLowerCase() === search.toLowerCase())
         setSearched(postSearched)
 
     }
-
-    console.log(searched)
 
     const listSearched = searched.length && searched.map((post) => {
         return(
@@ -39,12 +38,23 @@ function SearchForm() {
             />
         )
     })
+
+    useEffect(() => {
+            getAll()
+    },[numbers])
+
+    if(posts.length > 1){
+        return(
+            <div>
+                <Input onChange = {searchPost} placeholder = "Pesquisar" />
+                {listSearched.length  && listSearched}
+            </div>
+
+        )
+    }
     
     return (
-        <div>
-            <Input onChange = {searchPost} onBlur = {() => setPosts([{}])} onClick = {getAll} placeholder = "Pesquisar" />
-            {listSearched.length && listSearched}
-        </div>
+        <p>Carregando...</p>
     )
 }
 
