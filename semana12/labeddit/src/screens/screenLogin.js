@@ -11,7 +11,6 @@ function ScreenLogin(props) {
     const history = useHistory()
 
     const getLogin  = (form) => {
-        console.log(form)
         axios
         .post(`${BASE_URL}/users/login`,form)
         .then((response) => {
@@ -19,7 +18,7 @@ function ScreenLogin(props) {
             history.push('/')
         })
         .catch((err) => {
-            alert(err.message)
+            alert(err.response.data)
         })
     }
 
