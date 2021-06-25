@@ -1,15 +1,18 @@
 import React from 'react'
-import { CardPost } from './style'
+import { CardArea, CardPost } from './style'
 
 function SearchCard({post}) {
 const {username,title,body} = post
 
     return (
         <CardPost>
-            <h3>{title}</h3>
-            <p>{body}</p>
-            <p>{username}</p>
+            <CardArea>
+                <h3>{title}</h3>
+                <p>{body}</p>
+                <p>{username}</p>
+            </CardArea>
         </CardPost>
+
     )
 }
 

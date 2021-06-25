@@ -18,7 +18,7 @@ export const CardPost = styled.div`
 
     
 
-    h2{ 
+    h2,h3{ 
         width: fit-content;
         :hover{
             animation: ${skew} 1s infinite;
