@@ -10,7 +10,7 @@ function Buttons(props) {
             post = {props.isPost}
             voted = {props.voted}
             />
-
+            <p>{props.vote ? props.vote:"0"}</p>
             <Dislike
             idPost = {props.id}
             post = {props.isPost}

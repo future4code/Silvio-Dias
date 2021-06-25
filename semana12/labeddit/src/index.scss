@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&display=swap');
+
 *{
   padding: 0;     
   margin: 0;     
@@ -8,6 +10,8 @@ body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #161A18;
+  padding: 0 20rem;
 }
 
 code {
@@ -16,10 +20,10 @@ code {
 }
 
 h1,h2,h3 {
-  font-family: 'Press Start 2P', cursive
+  font-family: 'Bungee', cursive;
 }
 
-h4,h5,h6,p{
+h4,h5,h6,p,input{
   font-family: 'Open Sans', sans-serif;
 }
 

@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useContext } from 'react'
 import { BASE_URL, headers } from '../../constants/url'
 import {GlobalStateContext} from "../../globalstate/GlobalStateContext"
+import {ButtonVote} from "../button/style"
 
 function Like(props) {
     const {DeleteVote,setVoted} = useContext(GlobalStateContext)
@@ -35,7 +36,7 @@ function Like(props) {
 
     return (
         <div>
-            <button onClick = {() => getLike(props.idPost)} >Curtir</button>
+            <ButtonVote onClick = {() => getLike(props.idPost)} > &#8593; </ButtonVote>
         </div>
     )
 }

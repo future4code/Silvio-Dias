@@ -1,5 +1,4 @@
 import React from 'react'
-import { useLocation } from 'react-router-dom'
 import {
     FacebookShareButton,
     LinkedinShareButton,
@@ -8,6 +7,13 @@ import {
     TwitterShareButton,
   } from "react-share";
 
+import {SocialIcon} from "./style"
+
+import Facebook from "../../img/Facebook.png"
+import Linkedin from "../../img/Linkedin.png"
+import Reddit from "../../img/Reddit.svg"
+import Telegram from "../../img/Telegram.png"
+import Twitter from "../../img/Twitter.png"
 
 function SocialButtons() {
 
@@ -16,27 +22,27 @@ function SocialButtons() {
     return (
         <div>
             <FacebookShareButton
-                children = "Facebook"
+                children = {<SocialIcon src = {Facebook} />} 
                 url = {url}
             />
 
             <LinkedinShareButton
-                children = "Linkedin"
+                children = {<SocialIcon src = {Linkedin} />} 
                 url = {url}
                 
             />
             <RedditShareButton
-                children = "Reddit"
+                children = {<SocialIcon src = {Reddit} />} 
                 url = {url}
                 
             />
             <TelegramShareButton
-                children = "Telegram"
+                children = {<SocialIcon src = {Telegram} />} 
                 url = {url}
             
             />
             <TwitterShareButton    
-                children = "Twitter"
+                children = {<SocialIcon src = {Twitter} />} 
                 url = {url}
 
             />

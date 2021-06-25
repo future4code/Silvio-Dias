@@ -1,14 +1,13 @@
 import React, {useContext, useState} from 'react'
 import PageNumber from '../../hooks/pageNumbers'
-import {GlobalStateContext} from "../../globalstate/GlobalStateContext"
 import axios from 'axios'
 import { BASE_URL, headers } from '../../constants/url'
 import SearchCard from '../card/searchCard'
+import {Input} from "./styled"
 
 function SearchForm() {
     const [posts,setPosts] = useState([{}])
     const [searched,setSearched] = useState([{}])
-    const {setPage} = useContext(GlobalStateContext)
     const numbers = PageNumber()
 
     const getAll = () => {
@@ -31,23 +30,19 @@ function SearchForm() {
 
     }
 
+    console.log(searched)
+
     const listSearched = searched.length && searched.map((post) => {
         return(
             <SearchCard
             post = {post}
             />
-
-            // <div>
-            //     <h3>{post.title}</h3>
-            //     <p>{post.body}</p>
-            //     <p>{post.username}</p>
-            // </div>
         )
     })
     
     return (
         <div>
-            <input onChange = {searchPost} onBlur = {() => setPosts([{}])} onClick = {getAll} placeholder = "Pesquisar" />
+            <Input onChange = {searchPost} onBlur = {() => setPosts([{}])} onClick = {getAll} placeholder = "Pesquisar" />
             {listSearched.length && listSearched}
         </div>
     )

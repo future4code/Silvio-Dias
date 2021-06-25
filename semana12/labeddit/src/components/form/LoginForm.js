@@ -1,5 +1,6 @@
 import React from 'react'
 import useForm from '../../hooks/useForm'
+import {Input} from "./styled"
 
 
 function LoginForm(props) {
@@ -8,8 +9,8 @@ function LoginForm(props) {
     return (
         <div>
             <form>
-                <input name = "email" onChange = { onChange } type = "email" placeholder = "E-mail"/>
-                <input name = "password" onChange = { onChange } type = "password" placeholder = "Password"/>
+                <Input name = "email" onChange = { onChange } type = "email" placeholder = "E-mail"/>
+                <Input name = "password" onChange = { onChange } type = "password" placeholder = "Password"/>
             </form>
             <button onClick = {() => props.login(form)} type = "submit">Login</button>
         </div>

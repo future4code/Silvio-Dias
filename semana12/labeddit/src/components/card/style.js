@@ -1,57 +1,55 @@
 import styled, { keyframes } from "styled-components"
+import { white, basic } from "../../constants/color"
+
+const skew = keyframes`
+    0% { transform: skewX(50deg) }
+    0.2%{ transform: skewX(-50deg) }
+    1%  { transform: none };
+
+`
 
 export const CardPost = styled.div`
-    background-color: gray;
+    display: flex;
+    word-break: break-all;
+    background-color: ${white};
+    box-shadow: 0 0 5px ${white}; 
     margin: 2rem;
     padding:1rem;
 
-`
-
-const glitch = keyframes`
-
-from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-
-`
-
-const jitter = keyframes`
-    from{
-        transform: translateX(0);
-    }
-
-    to{
-        transform: translateX(-.2em) skew(-40deg);
-    }
-`
-
-export const CardTitulo = styled.h2`
-
-    text-transform: uppercase;
-    mix-blend-mode: screen;
-    color: transparent;
-    text-shadow: 0 0 .125rem rgba(0,255,0,1);
-    animation: ${glitch }2s linear infinite;
     
-    /* ::before
 
-  ::before,
-  ::after
-    content: attr(data-text);
-    position: absolute;
-    top: 0;
-    left: 0;
-    mix-blend-mode: screen
-    animation ${glitch} 5s infinite alternate;
-  ::before
-    text-shadow: 0 0 .125rem rgba(255,0,0,1);
-  ::after
-    text-shadow: 0 0 .125rem rgba(0,0,255,1);
-    animation-delay: 5s; */
+    h2{ 
+        width: fit-content;
+        :hover{
+            animation: ${skew} 1s infinite;
+        }
+        }
 
+    :hover{
+        cursor: pointer;
+    }
+`
 
+export const Title = styled.div`
+    background-color: ${basic};
+    width: 100%;
+    padding: 1rem;
+    color: ${white};
+    margin-bottom: 1rem;
+`
+
+export const CardArea = styled.div`
+    display:flex;
+    flex-direction: column;
+
+`
+
+export const VoteArea = styled.div`
+    margin-right: 1rem;
+
+`
+
+export const SocialComents = styled.div`
+    margin-top: 1rem;
+    display:flex;
 `

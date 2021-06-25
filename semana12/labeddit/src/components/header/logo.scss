@@ -54,21 +54,35 @@ $bgcolor: #111;
   -webkit-box-sizing: border-box;
 }
 
-.vhs{
-  font-family: 'Bungee', cursive;
-  text-transform: uppercase;
+.logo{
+  opacity: 0.7;
   font-size: 80px;
+  text-transform: uppercase;
   font-weight: bold;
   color: red;
   mix-blend-mode: screen;
-  position: relative;
   white-space: nowrap;
   -webkit-filter: blur(1px);
   -moz-filter: blur(1px);
    filter: blur(1px);
-  @include animation('skew 2s infinite', 'flash .04s infinite');
+  @include animation('skew 2s infinite');
+
+  &:hover{
+    cursor: pointer;
+    &:after, &:before{
+    @include animation('flash .01')
+    }
+  }
+
+  &:after, &:before{
+    content: attr(data-text);
+    position: absolute;
+    mix-blend-mode: screen;
+  }
   
   &:after{
+    top: 0;
+    left: $offset;
     color: blue;
     @include animation('move 1.5s infinite');
   }
@@ -78,37 +92,6 @@ $bgcolor: #111;
     color: limegreen;
   }
 }
-
-.line{
-  position: absolute;
-  left: 0;
-  right: 0;
-  width: 100%;
-  height: 1px;
-  background: blue;
-  mix-blend-mode: screen;
-  -webkit-filter: blur(1px);
-  -moz-filter: blur(1px);
-  filter: blur(1px);
-  &:after, &:before{
-    content: '';
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    mix-blend-mode: screen;
-  }
-  &:after{
-    top: 2px;
-    background: red;
-  }
-  &:before{
-    top: -2px;
-    background: limegreen;
-  }
-}
-  
-
 
 @include keyframes(skew){
   0%    { @include transform(none) }
@@ -127,5 +110,5 @@ $bgcolor: #111;
 }
 @include keyframes(flash){
   0%   { @include opacity(1) }
-  50%  { @include opacity(0.6) }
+  100%  { @include opacity(0.6) }
 }

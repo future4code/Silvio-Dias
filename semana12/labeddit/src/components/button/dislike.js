@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useContext } from 'react'
 import { BASE_URL, headers } from '../../constants/url'
 import {GlobalStateContext} from "../../globalstate/GlobalStateContext"
+import {ButtonVote} from "../button/style"
 
 function Dislike(props) {
     const {DeleteVote,setVoted} = useContext(GlobalStateContext)
@@ -46,7 +47,7 @@ function Dislike(props) {
 
     return (
         <div>
-            <button onClick = {() => getDislike(props.idPost)} >Descurtir</button>
+            <ButtonVote onClick = {() => getDislike(props.idPost)} >&#8595;</ButtonVote>
         </div>
     )
 }

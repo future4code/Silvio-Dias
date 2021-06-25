@@ -1,6 +1,8 @@
 import React from 'react'
 import ScreenFeed from '../screens/screenFeed'
 import { useHistory } from "react-router-dom";
+import Pagination from '../components/pagination/Pagination';
+
 function Feed() {
 
     const history = useHistory()
@@ -13,6 +15,7 @@ function Feed() {
     return (
         <div>
             <ScreenFeed/>
+            <Pagination/>
         </div>
     )
 }
