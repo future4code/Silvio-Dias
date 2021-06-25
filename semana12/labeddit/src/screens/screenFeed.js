@@ -9,22 +9,19 @@ import {GlobalStateContext} from "../globalstate/GlobalStateContext"
 function ScreenFeed(props) {
     const {getPost,posts} = useContext(GlobalStateContext)
 
-    const sendPost = (body) => {
+    const sendPost = (body) => { //Envia novo post
         axios
         .post(`${BASE_URL}/posts`,body,headers)
         .then((response) => {
-            console.log(response)
-            getPost()
+            getPost() //Atualiza lista de post
         })
         .catch((err) => {
-            alert(err.message)
+            alert(err.response.data)
         })
     }
 
     return (
-        <div>
-            <SearchForm/>
-            
+        <div>            
             <PostForm
                 post = {sendPost}
             />
