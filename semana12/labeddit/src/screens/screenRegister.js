@@ -10,7 +10,6 @@ function ScreenRegister() {
     const history = useHistory()
 
     const register = (form) => {
-        console.log(form)
          axios
         .post(`${BASE_URL}/users/signup`,form)
         .then((response) => {

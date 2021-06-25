@@ -17,7 +17,7 @@ function ScreenPost() {
             getComments()
         })
         .catch((err) => {
-
+            alert(err.response.data)
         })
     }
 

@@ -12,7 +12,7 @@ function Header() {
     const token = localStorage.getItem("token");
     return (
         <HeaderDiv>
-                <h1 data-text = "Labeditt" class= "logo" onClick = {() => goTo(history,"/")}>Labeditt</h1>
+                <h1 data-text = "Labedditt" class= "logo" onClick = {() => goTo(history,"/")}>Labedditt</h1>
                 {token && <Logout/>}
         </HeaderDiv>
     )

@@ -16,7 +16,6 @@ const [isPost,setIsPost] = useState("")
 const [token,setToken] = useState(localStorage.getItem("token"))
 const history = useHistory()
 
-console.log(posts)
 
 const getPost = () => {
     if(token){
