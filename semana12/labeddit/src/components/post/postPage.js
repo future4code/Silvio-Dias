@@ -2,8 +2,7 @@ import React, {useContext} from 'react'
 import {GlobalStateContext} from "../../globalstate/GlobalStateContext"
 import { useParams } from "react-router-dom";
 import Card from '../card/Card';
-import Buttons from '../button/buttons';
-
+import SocialButtons from '../button/socialButtons';
 
 function PostPage() {
     const params = useParams()
@@ -18,6 +17,7 @@ function PostPage() {
                 <Card
                     post = {post[0]}
                 />
+                <SocialButtons/>
             </div>
 
         )

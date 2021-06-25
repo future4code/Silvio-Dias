@@ -2,7 +2,8 @@ import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { CardPost,Title,VoteArea,CardArea,SocialComents } from './style'
 import Buttons from '../button/buttons';
-import SocialButtons from '../button/socialButtons';
+import { goTo } from '../../router/Coordinator';
+
 
 function Card({ post },props) {
     const {id,title,body,
@@ -23,7 +24,7 @@ function Card({ post },props) {
 
             <CardArea>
                 <Title>
-                    <h2 class="title" data-text= {title} >{title}</h2>
+                    <h2 onClick = {() => goTo(history,`/post/${id}`)} class="title" data-text= {title} >{title}</h2>
                     <h4>{username}</h4>
                 </Title>
                 <div>
@@ -36,7 +37,6 @@ function Card({ post },props) {
 
                 <SocialComents>
                     {commentCount ? (<p> &#128172; {commentCount} {commentCount > 1? "Comentários":"Comentário"}</p>): <p> &#128172; Nenhum Comentário</p>}
-                    <SocialButtons/>
                 </SocialComents>
 
     
