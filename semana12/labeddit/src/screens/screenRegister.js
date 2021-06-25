@@ -2,6 +2,7 @@ import React from 'react'
 import RegisterForm from '../components/form/RegisterForm'
 import axios from "axios"
 import { BASE_URL } from '../constants/url'
+import { FormCard, Titulo } from './style'
 
 function ScreenRegister() {
 
@@ -16,10 +17,14 @@ function ScreenRegister() {
     }
     return (
         <div>
-            <RegisterForm
-            register = {register}
-            
-            />
+            <Titulo class="titulo">Cadastro</Titulo>
+            <FormCard>
+                <RegisterForm
+                register = {register}
+                
+                />
+            </FormCard>
+
         </div>
     )
 }

@@ -2,6 +2,7 @@ import React, { useState,useEffect } from 'react'
 import axios from 'axios' 
 import { GlobalStateContext } from './GlobalStateContext'
 import { BASE_URL,headers } from '../constants/url'
+import { useHistory } from 'react-router-dom'
 
 
 const GlobalState = (props) => {
@@ -11,8 +12,10 @@ const [comments,setComments] = useState([{}])
 const [voted,setVoted] = useState(false)
 const [posts,setPosts] = useState([{}])
 const [idPost,setIdPost] = useState([{}])
-const token = localStorage.getItem("token");
+const [token,setToken] = useState(localStorage.getItem("token"))
+const history = useHistory()
 
+console.log(posts)
 
 const getPost = () => {
     if(token){
@@ -23,7 +26,12 @@ const getPost = () => {
             setPosts(response.data)
         })
         .catch((err) => {
-            alert(err.response.data)
+            if(err.response.status === 401 && token){
+                localStorage.removeItem("token")
+                history.push("/login")
+            }
+                alert(err.response.data)
+
         })
     
     }
@@ -59,7 +67,7 @@ const DeleteVote = (id,path)  => {
 useEffect(() => {
     setVoted(false)
     getPost()
-}, [voted,page])
+}, [voted,page,token])
 
 
 return (

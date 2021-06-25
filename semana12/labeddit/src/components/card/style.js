@@ -5,7 +5,6 @@ const skew = keyframes`
     0% { transform: skewX(50deg) }
     0.2%{ transform: skewX(-50deg) }
     1%  { transform: none };
-
 `
 
 export const CardPost = styled.div`

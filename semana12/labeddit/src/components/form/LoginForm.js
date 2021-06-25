@@ -1,6 +1,6 @@
 import React from 'react'
 import useForm from '../../hooks/useForm'
-import {Input} from "./styled"
+import {Input,FormLog} from "./styled"
 import ButtonForm from '../button/button'
 
 
@@ -9,10 +9,10 @@ function LoginForm(props) {
 
     return (
         <div>
-            <form>
+            <FormLog>
                 <Input name = "email" onChange = { onChange } type = "email" placeholder = "E-mail"/>
                 <Input name = "password" onChange = { onChange } type = "password" placeholder = "Password"/>
-            </form>
+            </FormLog>
             <ButtonForm
             button = {() => props.login(form)}
             text = "Login"

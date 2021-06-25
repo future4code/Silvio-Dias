@@ -7,7 +7,7 @@ import { BASE_URL,headers } from '../constants/url'
 import {GlobalStateContext} from "../globalstate/GlobalStateContext"
 
 function ScreenPost() {
-    const {idPost,getComments} = useContext(GlobalStateContext)
+    const {idPost,getComments,posts} = useContext(GlobalStateContext)
   
 
     const sendComment = (body) => {

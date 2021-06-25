@@ -4,12 +4,11 @@ import axios from "axios"
 import { BASE_URL } from '../constants/url'
 import { useHistory } from "react-router-dom";
 import {goTo} from "../router/Coordinator"
+import { Titulo,FormCard,Link } from './style'
 
 function ScreenLogin(props) {
 
     const history = useHistory()
-
-
 
     const getLogin  = (form) => {
         console.log(form)
@@ -26,11 +25,13 @@ function ScreenLogin(props) {
 
     return (
         <div>
-            <h1>LOGIN</h1>
-            <LoginForm
-            login = {getLogin}
-            />
-            <h3 onClick = {() => goTo(history,"/register")}>Não tem cadastro? Cadastre-se aqui</h3>
+            <Titulo>Login</Titulo>
+            <FormCard>
+                <LoginForm
+                login = {getLogin}
+                />
+                <Link onClick = {() => goTo(history,"/register")}>Não tem cadastro? Clique aqui</Link>
+            </FormCard>
         </div>
     )
 }

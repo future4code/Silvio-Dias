@@ -2,6 +2,7 @@ import React from 'react'
 import ScreenFeed from '../screens/screenFeed'
 import { useHistory } from "react-router-dom";
 import Pagination from '../components/pagination/Pagination';
+import { PaginationArea } from './style';
 
 function Feed() {
 
@@ -15,7 +16,10 @@ function Feed() {
     return (
         <div>
             <ScreenFeed/>
-            <Pagination/>
+            <PaginationArea>
+                <Pagination/>
+            </PaginationArea>
+
         </div>
     )
 }

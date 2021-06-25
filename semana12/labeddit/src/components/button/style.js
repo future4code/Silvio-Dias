@@ -6,6 +6,7 @@ export const ButtonVote = styled.div`
     color: ${basic};
     font-size: x-large;
 
+
     :hover{
         cursor:pointer;
     }
@@ -23,4 +24,10 @@ export const Button = styled.button`
     color: ${white};
     padding: 0.5rem;
     font-size: large;
+    transition: 0.4s;
+
+    :hover{
+        cursor:pointer;
+        background-color: green;
+    }
 `

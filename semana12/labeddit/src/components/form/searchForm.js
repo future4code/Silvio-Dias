@@ -18,7 +18,10 @@ function SearchForm() {
                 console.log("foi")
             })
             .catch((err) => {
-                alert(err)
+                if(err.response.status === 401){
+
+                }
+                    alert(err.response.data)
             })
         }
     
@@ -27,6 +30,7 @@ function SearchForm() {
         const postSearched = posts.title && posts.filter(el => el.title.toLowerCase() === search.toLowerCase() ||
                                                 el.username.toLowerCase() === search.toLowerCase() ||
                                                 el.body.toLowerCase() === search.toLowerCase())
+                                                
         setSearched(postSearched)
 
     }
@@ -47,6 +51,7 @@ function SearchForm() {
         return(
             <div>
                 <Input onChange = {searchPost} placeholder = "Pesquisar" />
+                <button>&#128269;</button>
                 {listSearched.length  && listSearched}
             </div>
 

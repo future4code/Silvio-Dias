@@ -7,7 +7,7 @@ import { BASE_URL, headers } from '../constants/url'
 import {GlobalStateContext} from "../globalstate/GlobalStateContext"
 
 function ScreenFeed(props) {
-    const {getPost} = useContext(GlobalStateContext)
+    const {getPost,posts} = useContext(GlobalStateContext)
 
     const sendPost = (body) => {
         axios
