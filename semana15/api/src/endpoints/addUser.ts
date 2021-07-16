@@ -14,7 +14,7 @@ export const addUser = (
         }
 
         const userList:number = users.findIndex(
-            (user) => user.name = req.body.name
+            (user) => user.name === req.body.name
         )
 
         if(userList !== -1){
