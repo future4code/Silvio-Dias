@@ -5,6 +5,7 @@
   },
 
   "scripts": {
+    "start": "tsc && node ./build/index.js",
     "dev-start": "tsnd src/index.ts"
   },
   "devDependencies": {
