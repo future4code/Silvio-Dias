@@ -6,6 +6,7 @@ export const payBill = (
     res:Response
 ): void => {
     let errorCode = 400
+
     try{
         if(!req.body.Nome && !req.body.CPF){
             errorCode = 401
@@ -27,8 +28,15 @@ export const payBill = (
         if(users[userIndex].Saldo <  req.body.pagamento){
             throw new Error("Saldo insuficiente")
         }
-    
-        
+
+        if(!req.body.descricao){
+            throw new Error("Descrição de pagamento não enviada")
+        }
+
+        users[userIndex].Saldo = users[userIndex].Saldo - req.body.pagamento
+        users[userIndex].Extrato.push({valor:req.body.pagamento,data: Date.parse(req.body.data) || Date.now(),descricao:req.body.descricao})
+
+        res.status(200).send({Mensagem:"Pagamento Fetuado com sucesso", Extrato: users[userIndex].Extrato })
     }catch(Error){
         res.status(errorCode).send(Error.message)
     }

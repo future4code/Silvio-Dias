@@ -4,11 +4,11 @@ export type user = {
     CPF:string,
     Nascimento:string,
     Saldo:number,
-    Extrato: extrato[] | []
+    Extrato: extrato[]
 }
 
 export type extrato = {
     valor:number,
-    data:string,
+    data:number,
     descricao:string
 }
