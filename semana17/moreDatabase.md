@@ -57,3 +57,32 @@ d) SELECT * FROM Actor ORDER BY salary DESC LIMIT 3
 e) SELECT AVG(salary), gender FROM Actor
 GROUP BY gender;
 
+##Exercicio 6   
+
+a) ALTER TABLE Movies ADD playing_limit_date DATE;
+
+b) ALTER TABLE Movies CHANGE Score Score FLOAT;
+
+c) UPDATE Movies
+SET playing_limit_date = "2021-07-25"
+WHERE Name = "Se Eu Fosse Você";
+
+UPDATE Movies
+SET playing_limit_date = "2020-07-25"
+WHERE Name = "Cidade de Deus";
+
+d) Exibi tabela vazia
+
+##Exercicio 7
+
+a) 3
+
+b)9.3
+
+c) 0 (Apaguei o filme em estreia)
+
+e) 10
+
+f) 8
+
+##Exercicio 8
