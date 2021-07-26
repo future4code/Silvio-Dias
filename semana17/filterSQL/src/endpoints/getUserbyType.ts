@@ -5,9 +5,12 @@ import { user } from "../type"
 export const getUsersByType = async(req: Request,res: Response): Promise<void> =>{
     try {
 
+
       const type = req.params.type || "%"
+
       const result = await connection("aula48_exercicio")
          .where({type})
+
          
       const users = result.map(toUser)
 
