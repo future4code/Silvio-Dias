@@ -3,5 +3,16 @@ export type user = {
    name: string
    nickname: string
    email: string
-   cep: string
+   CEP: string
+}
+
+export type address = {
+   cep:string
+   logradouro:string
+   numero:number
+   complemento:string
+   bairro:string
+   cidade:string
+   estado:string
+   id_usuario:string
 }

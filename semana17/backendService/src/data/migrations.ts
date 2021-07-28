@@ -11,7 +11,7 @@ const createTables = () => connection
          name VARCHAR(255) NOT NULL,
          nickname VARCHAR(255) NOT NULL,
          email VARCHAR(255) UNIQUE NOT NULL,
-         address VARCHAR(255) NOT NULL
+         CEP VARCHAR(9) NOT NULL
       );
    `)
    .then(() => { console.log("Tabelas criadas") })
