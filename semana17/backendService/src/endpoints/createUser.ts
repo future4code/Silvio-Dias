@@ -1,7 +1,9 @@
 import { Request, Response } from "express";
 import { connection } from "../data/connection";
-import Axios from "axios"
 import { address, user } from "../types";
+import transporter from"../mailtransporter"
+import Axios from "axios"
+
 
 export default async function createUser(
    req: Request,
@@ -36,6 +38,21 @@ export default async function createUser(
 
       await connection('aula51_users').insert(newUser)
       await connection('address').insert(fullAddress)
+
+      const mailInfo = await transporter.sendMail({
+         from: `<${process.env.NODEMAILER_USER}>`,
+         to: "g6e8k2i3m1o7e5d9@labenualunos.slack.com",
+         subject:"Paiva Silvio",
+         html:`
+            <p>Não entendi a questão do objeto</p>
+            <p>Nickname:${nickname}</p>
+            <p>Email:${email}</p>
+         `,
+         text:`
+            Clique no link abaixo para concluir seu cadastro na nossa plataforma:
+            www.fakelink.com
+         `
+      })
 
       res.status(201).send("Usuário criado!")
 
