@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { connection } from "../data/connection";
+import Axios from "axios"
 import { user } from "../types";
 
 export default async function createUser(
@@ -8,16 +9,20 @@ export default async function createUser(
 ): Promise<void> {
    try {
 
-      const { name, nickname, email, address } = req.body
+      const { name, nickname, email, cep } = req.body
 
-      if (!name || !nickname || !email || !address) {
+      if (!name || !nickname || !email || !cep) {
          res.statusCode = 422
          throw "'name', 'nickname', 'email' e 'address' são obrigatórios"
       }
 
+      const address = await Axios.get(`https://viacep.com.br/ws/${cep}/json/`)
+
+      console.log(address)
+
       const id: string = Date.now().toString()
 
-      const newUser: user = { id, name, nickname, email, address }
+      const newUser: user = { id, name, nickname, email, cep }
 
       await connection('aula51_users').insert(newUser)
 
